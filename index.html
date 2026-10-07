@@ -1,0 +1,999 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>에고이즘 리더 교육 설문</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f6f4ef; --fg:#1b1a18; --muted:#6b675f; --card:#ffffff; --line:#e4dfd6; --line2:#cfc8bb;
+  --acc:#ED6D20; --acc2:#ff8a3d; --accbg:#fff1e8; --ok:#1f8a4c; --okbg:#e7f6ec; --warn:#b26b00; --warnbg:#fff4df; --bad:#c0392b; --badbg:#fdecea;
+  --blue:#2457a8; --bluebg:#e9f0fb; --shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px -16px rgba(0,0,0,.25);
+  --r:14px; --font:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Segoe UI",Roboto,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f0f10; --fg:#f1efe9; --muted:#9b978e; --card:#191919; --line:#2b2a27; --line2:#3b3935;
+  --accbg:#3a2415; --ok:#5fcf8b; --okbg:#143422; --warn:#f0b35a; --warnbg:#3a2a10; --bad:#ff7b6b; --badbg:#3d1a16;
+  --blue:#8fb4ff; --bluebg:#172743; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.8);
+}}
+:root[data-theme="dark"]{
+  --bg:#0f0f10; --fg:#f1efe9; --muted:#9b978e; --card:#191919; --line:#2b2a27; --line2:#3b3935;
+  --accbg:#3a2415; --ok:#5fcf8b; --okbg:#143422; --warn:#f0b35a; --warnbg:#3a2a10; --bad:#ff7b6b; --badbg:#3d1a16;
+  --blue:#8fb4ff; --bluebg:#172743; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -16px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:16px;line-height:1.55;word-break:keep-all;overflow-wrap:anywhere}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+button{font:inherit;color:inherit}
+input,select,textarea{font:inherit;color:inherit}
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .in{max-width:960px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.01em}
+.brand .dot{width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.top nav{margin-left:auto;display:flex;gap:4px;flex-wrap:wrap}
+.top nav a{padding:6px 10px;border-radius:8px;color:var(--muted);font-size:14px}
+.top nav a.on,.top nav a:hover{color:var(--fg);background:var(--card);text-decoration:none}
+.wrap{max-width:960px;margin:0 auto;padding:20px 16px 80px}
+.narrow{max-width:760px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);font-weight:700}
+h1{font-size:28px;line-height:1.25;margin:6px 0 10px;letter-spacing:-.02em}
+h2{font-size:20px;margin:0 0 6px;letter-spacing:-.01em}
+h3{font-size:16px;margin:0 0 4px}
+p{margin:0 0 10px}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);margin:0 0 14px}
+.card.flat{box-shadow:none}
+.grid{display:grid;gap:14px}
+.grid.c3{grid-template-columns:repeat(3,1fr)}
+.grid.c2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:720px){.grid.c3,.grid.c2{grid-template-columns:1fr}}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.row.between{justify-content:space-between}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);cursor:pointer;font-weight:600;line-height:1.2;transition:.12s}
+.btn:hover{border-color:var(--fg)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:#d85f17}
+.btn.ghost{background:transparent}
+.btn.xs{padding:5px 10px;font-size:13px;border-radius:8px}
+.btn.sm{padding:7px 12px;font-size:14px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.danger{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 40%,var(--line2))}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid transparent;white-space:nowrap}
+.badge.ok{background:var(--okbg);color:var(--ok)}
+.badge.warn{background:var(--warnbg);color:var(--warn)}
+.badge.bad{background:var(--badbg);color:var(--bad)}
+.badge.acc{background:var(--accbg);color:var(--acc)}
+.badge.blue{background:var(--bluebg);color:var(--blue)}
+.badge.gray{background:var(--bg);color:var(--muted);border-color:var(--line)}
+.notice{border-left:4px solid var(--acc);background:var(--accbg);padding:10px 14px;border-radius:8px;margin:0 0 14px;font-size:14px}
+.notice.blue{border-color:var(--blue);background:var(--bluebg)}
+.notice.bad{border-color:var(--bad);background:var(--badbg)}
+.notice.ok{border-color:var(--ok);background:var(--okbg)}
+label.lbl{display:block;font-size:13px;color:var(--muted);margin:0 0 4px;font-weight:600}
+.inp{width:100%;padding:10px 12px;border:1px solid var(--line2);border-radius:10px;background:var(--bg);outline:none}
+.inp:focus{border-color:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 25%,transparent)}
+textarea.inp{min-height:96px;resize:vertical;line-height:1.5}
+/* 드롭다운: 가로로 꽉 채우지 않고 화살표를 글자 가까이에 둔다 */
+select.inp{appearance:none;-webkit-appearance:none;width:auto;min-width:260px;max-width:100%;padding:10px 44px 10px 14px;cursor:pointer;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%239b978e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");background-repeat:no-repeat;background-position:right 14px center}
+select.inp:hover{border-color:var(--fg)}
+.field{margin:0 0 12px}
+/* survey */
+.progress{position:sticky;top:53px;z-index:20;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 16px;box-shadow:var(--shadow)}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin:6px 0 8px}
+.bar i{display:block;height:100%;background:var(--acc);width:0;transition:width .3s}
+.parts{display:flex;gap:6px;flex-wrap:wrap}
+.parts a{font-size:12px;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.parts a.done{border-color:var(--ok);color:var(--ok);background:var(--okbg)}
+.sec{margin:26px 0 10px}
+.sec .eyebrow{margin-bottom:2px}
+.sec p.note{color:var(--muted);font-size:14px;margin:4px 0 0}
+.hd{margin:22px 0 8px;padding:0 0 6px;border-bottom:2px solid var(--line)}
+.hd h3{font-size:17px}
+.hd .note{font-size:13px;color:var(--muted);margin:2px 0 0}
+.q{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin:0 0 10px;scroll-margin-top:140px}
+.q.err{border-color:var(--bad);box-shadow:0 0 0 3px color-mix(in srgb,var(--bad) 18%,transparent)}
+.q .lab{font-weight:700;margin:0 0 14px;display:flex;gap:8px;align-items:flex-start}
+.q .lab .no{color:var(--muted);font-weight:600;font-size:13px;flex:none;padding-top:3px;font-variant-numeric:tabular-nums}
+.q .lab .req{color:var(--acc);font-size:12px;flex:none;padding-top:4px}
+.q .desc{color:var(--muted);font-size:14px;margin:-8px 0 16px;line-height:1.5}
+.q .errmsg{color:var(--bad);font-size:13px;margin:8px 0 0;display:none}
+.q.err .errmsg{display:block}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips.col{flex-direction:column;align-items:stretch}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;font-size:15px;text-align:left;line-height:1.3}
+.chips.col .chip{border-radius:10px}
+.chip:hover{border-color:var(--fg)}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:600}
+.chip.off{opacity:.45}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line2);border-radius:10px;overflow:hidden}
+.seg button{padding:10px 6px;border:0;background:var(--bg);cursor:pointer;font-size:15px;border-right:1px solid var(--line2)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--acc);color:#fff;font-weight:700}
+.seg.sm button{padding:7px 4px;font-size:13px}
+.seg.seg4{grid-template-columns:repeat(4,1fr)}
+.seg button.na{color:var(--muted);font-size:13px}
+.seg button.na.on{background:var(--line2);color:var(--fg)}
+.acts{display:flex;flex-direction:column;gap:14px}
+.act .aq{display:flex;gap:8px;font-size:14.5px;line-height:1.5;margin:0 0 8px}
+.act .ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.act .ctl .seg{flex:1 1 100%}
+.nachip{padding:6px 10px;font-size:13px;color:var(--muted);border-radius:8px}
+.nachip.on{background:var(--line2);border-color:var(--line2);color:var(--fg);font-weight:600}
+/* 넓은 화면: 답변 버튼을 오른쪽 고정 폭 열에 두어 모든 행의 세 버튼이 일직선으로 정렬됨. "해당 없음"은 그 오른쪽 별도 칸. 좁은 화면은 질문 아래로 */
+@media (min-width:721px){
+  .acts{gap:10px}
+  .act{display:grid;grid-template-columns:1fr 388px;gap:16px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+  .act:first-child{border-top:0;padding-top:0}
+  .act .aq{margin:0}
+  .act .ctl{display:grid;grid-template-columns:300px 80px;gap:8px;justify-content:start}
+  .act .ctl .seg{width:300px}
+  .act .seg button{padding:8px 4px;font-size:14px}
+  .nachip{width:80px;padding:8px 0;text-align:center}
+}
+.an{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--accbg);color:var(--acc);font-size:12px;font-weight:800;flex:none;margin-top:2px}
+.ok-t{color:var(--ok)}.bad-t{color:var(--bad)}
+.cmp tr.grp td{background:var(--bg);font-size:13.5px;padding:8px}
+.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale button{padding:11px 0;border-radius:10px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;font-weight:700;font-size:16px;font-variant-numeric:tabular-nums}
+.scale button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+.scale.sm button{padding:6px 0;font-size:13px}
+/* 5단계 글자 버튼 (전혀 그렇지 않다 … 매우 그렇다) — 값은 1~5로 저장 */
+.scale5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.scale5 button{padding:10px 4px;border-radius:10px;border:1px solid var(--line2);background:var(--bg);cursor:pointer;font-weight:600;font-size:13.5px;line-height:1.3;word-break:keep-all}
+.scale5 button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+@media (max-width:600px){.scale5{gap:4px}.scale5 button{font-size:12px;padding:8px 2px}}
+.seg.seg5{grid-template-columns:repeat(5,1fr)}
+.seg.seg5 button{font-size:12px;padding:7px 2px;line-height:1.25;word-break:keep-all}
+.ends{display:flex;justify-content:flex-end;font-size:12px;color:var(--muted);margin:6px 2px 0}
+/* 문항 오른쪽 메모 (직후·4주 후 설문에서 본인의 이전 응답) */
+.q.withmemo{display:grid;grid-template-columns:1fr 280px;gap:18px;align-items:start}
+.memo{background:var(--bluebg);border:1px dashed var(--blue);border-radius:10px;padding:10px 12px;font-size:13.5px;line-height:1.5}
+.memo .t{font-weight:700;color:var(--blue);font-size:12px;margin:0 0 4px}
+.memo .v{white-space:pre-wrap}
+@media (max-width:720px){.q.withmemo{grid-template-columns:1fr;gap:12px}.q.withmemo .memo{order:-1}}
+.ctx{background:var(--bluebg);border:1px dashed var(--blue);border-radius:12px;padding:12px 14px;margin:0 0 10px;font-size:14px}
+.ctx .t{font-weight:700;color:var(--blue);margin:0 0 4px;font-size:13px}
+.ctx .v{white-space:pre-wrap}
+.submitbar{position:sticky;bottom:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(8px);padding:12px 0;margin-top:20px;border-top:1px solid var(--line)}
+/* 대표님 대조 평가: 저장되지 않은 변경이 있을 때 화면 아래에 고정되는 저장 바 */
+.savebar{position:sticky;bottom:12px;z-index:15;display:flex;align-items:center;gap:12px;justify-content:space-between;background:var(--warnbg);border:1px solid color-mix(in srgb,var(--warn) 50%,var(--line));border-radius:12px;padding:10px 14px;margin:0 0 14px;box-shadow:var(--shadow)}
+.savebar b{color:var(--warn)}
+/* tables */
+table.tb{width:100%;border-collapse:collapse;font-size:14px}
+.tb th,.tb td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.tb th{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:.02em;white-space:nowrap}
+.tb tr.click{cursor:pointer}
+.tb tr.click:hover td{background:var(--bg)}
+.tb tr.sel td{background:var(--accbg)}
+.tb td.num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.tbwrap{overflow-x:auto}
+.tabs{display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);margin:0 0 14px;overflow:visible}
+.tabs button{padding:10px 14px;border:0;background:none;cursor:pointer;color:var(--muted);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button.on{color:var(--fg);border-color:var(--acc)}
+.split{display:grid;grid-template-columns:300px 1fr;gap:16px;align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}.split .left.hide{display:none}}
+.leaderlist{display:flex;flex-direction:column;gap:6px}
+.leaderlist button{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);cursor:pointer;text-align:left}
+.leaderlist button.on{border-color:var(--acc);background:var(--accbg)}
+.leaderlist .nm{font-weight:700}
+.leaderlist .tm{color:var(--muted);font-size:13px}
+.leaderlist .st{margin-left:auto;display:flex;gap:3px}
+.dotst{width:9px;height:9px;border-radius:50%;background:var(--line2);display:inline-block}
+.dotst.on{background:var(--ok)}
+.cmp{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.cmp th{font-size:12px;color:var(--muted);text-align:left;white-space:nowrap}
+.cmp td.it{min-width:180px}
+.cmp td.it .d{color:var(--muted);font-size:12.5px;margin-top:3px;line-height:1.45}
+.cmp td.ctl{min-width:180px}
+.cmp td.lv{white-space:nowrap;text-align:center;min-width:92px}
+.cmp td.df{white-space:nowrap;text-align:center;min-width:80px}
+.hidden-val{display:inline-block;background:var(--line);color:transparent;border-radius:6px;padding:2px 10px;user-select:none;letter-spacing:.2em}
+.stat{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:720px){.stat{grid-template-columns:repeat(2,1fr)}}
+.stat .s{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat .s .k{font-size:12px;color:var(--muted);font-weight:700}
+.stat .s .v{font-size:24px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat .s .v small{font-size:13px;font-weight:600;color:var(--muted)}
+.ans{margin:0 0 14px}
+.ans .k{font-size:12.5px;color:var(--muted);font-weight:700;margin:0 0 2px}
+.ans .v{white-space:pre-wrap}
+.ans .v.empty{color:var(--muted);font-style:italic}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;font-size:14px}
+.kv .k{color:var(--muted)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:50;box-shadow:var(--shadow);opacity:0;transition:.2s;pointer-events:none}
+.toast.show{opacity:1}
+.demo{position:fixed;left:12px;bottom:12px;z-index:40;background:#111;color:#fff;border-radius:999px;padding:6px 12px;font-size:12px;opacity:.85}
+.demo b{color:var(--acc2)}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid var(--line2);border-top-color:var(--acc);border-radius:50%;animation:sp .8s linear infinite;vertical-align:-3px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.center{text-align:center}
+.hero{padding:30px 0 10px}
+.hero h1{font-size:32px}
+@media (max-width:600px){.hero h1{font-size:26px}h1{font-size:24px}.cmp td.it{min-width:140px}.top .in{padding:8px 12px;gap:8px}.brand span:last-child{font-size:14px;white-space:nowrap}.top nav{gap:2px}.top nav a{padding:5px 7px;font-size:13px}}
+.foot{max-width:960px;margin:0 auto;padding:10px 16px 40px;color:var(--muted);font-size:12px;display:flex;gap:14px;flex-wrap:wrap}
+.foot a{color:var(--muted)}
+details.more summary{cursor:pointer;color:var(--muted);font-size:13px}
+.legend{font-size:12.5px;color:var(--muted)}
+.legend b{color:var(--fg)}
+</style>
+</head>
+<body>
+<header class="top"><div class="in">
+  <a class="brand" href="#/"><span class="dot"></span><span>에고이즘 리더 교육 설문</span></a>
+  <nav id="nav"></nav>
+</div></header>
+<main class="wrap" id="app"><div class="center" style="padding:60px 0"><span class="spin"></span></div></main>
+<footer class="foot"><span>EGOIDSM · HR</span><a href="#/ceo">대표님 페이지</a><a href="#/admin">HR 관리</a><a href="#" id="themeBtn">테마</a></footer>
+<div class="toast" id="toast"></div>
+<script>
+/* ================================================================
+ * 설정 — 배포 시 build.py 가 API_URL 에 Apps Script 웹 앱 URL 을 넣는다.
+ * API_URL 이 비어 있거나 주소에 ?demo=1 이 있으면 데모 모드(브라우저 localStorage)로 동작.
+ * ================================================================ */
+const CONFIG = {
+  API_URL: 'https://script.google.com/macros/s/AKfycbwtyAAg64vKqlksn-FEY8FtSMWWe7v4EDBfGJOfE0ojVHCrdvo4DJJvCeAHGpVGlMn9Yw/exec',
+  DEADLINE: { pre: '10월 12일(월) 12:00', post: '10월 16일(금) 18:00', follow: '11월 16일(월) 18:00' },
+  TRAINING_DATE: '10월 15일(목)'
+};
+const DEMO = false;
+
+/* ───────────── 리더상 데이터 (설문 문서와 동일) ───────────── */
+const MUST4 = [
+  { n: 1, label: '중력', desc: '팀원들이 나와 함께 일하고 싶어 하고, 사람들이 내 주변으로 모인다' },
+  { n: 2, label: '방향제시', desc: '우리 팀이 어디로 가는지 팀원들이 자기 말로 설명할 수 있다' },
+  { n: 3, label: '추진력', desc: '결정한 일은 막히더라도 끝까지 밀어붙여 결과를 낸다' },
+  { n: 4, label: '높은 수준의 조직문화 이행', desc: '인재상(끊임없이 자신의 한계를 갱신하는 사람), 대원칙(에고이즘에 가장 이득이 되게 행동하라), 2가지 원칙(고객 중심, 고성과 지향), 7 Core Values(본질·실행·오너십·얼라인·솔직함·용기·창의성)를 내가 먼저 보여주고 팀에 요구한다' }
+];
+// 행동 질문 답변 보기 — 모든 질문 공통, 왼쪽부터 1·2·3점 (2026-10-01 사용자 결정)
+const EXEC3 = ['아니다', '일부만', '그렇다'];
+const NA = '해당 없음';
+// 리더라면 해야 하는 것 13항목 (2026-10-06 대표님 피드백 반영: 기준 설정·규율 설정 분리, 행동 질문 교정)
+// 항목마다 관측 가능한 행동 2개를 질문으로 묻는다 (na: "해당 없음" 선택 허용)
+const ITEMS = [
+  { n: 1, label: '팀 빌딩', acts: [
+    { q: '지금 팀에 필요한 사람이 누구인지(역량·성향) 명확히 알고 있고, 그 기준으로 직접 뽑고 있나요?' },
+    { q: '팀원들을 팀과 회사의 방향에 얼라인시키고, 팀원들 간의 케미를 높이기 위해 의도적으로 행동하고 있나요?' }] },
+  { n: 2, label: '팀 성과 창출', acts: [
+    { q: '팀의 성과(매출·고객 수·인지도 등)가 이전보다 더 커지고 있나요?' },
+    { q: '앞으로 더 큰 성과를 내기 위한 목표가 숫자로 정해져 있고, 팀이 그 목표를 향해 실제로 움직이고 있나요?' }] },
+  { n: 3, label: '팀원의 포지션·L&D·기대치·KPI 설정', acts: [
+    { q: '팀원마다 포지션·기대치·L&D가 글로 적혀 있고, 팀원 본인이 그 내용을 설명할 수 있나요?' },
+    { q: '분기마다, 그리고 역할이 바뀔 때마다 1on1을 통해 기대치를 다시 맞추고 있나요?' }] },
+  { n: 4, label: '업무 마감일 설정 및 관리', acts: [
+    { q: '업무를 진행하거나 팀원에게 지시할 때 마감일을 빠뜨리지 않고, 도전적으로 설정하고 있나요?' },
+    { q: '팀원들이 마감일을 미루지 않고 제때 완료하고 있나요?' }] },
+  { n: 5, label: '기준 설정', acts: [
+    { q: '팀원들의 말·생각·시야를 같은 수준으로 맞추기 위한 기준점(품질·속도·우선순위 등)을 명문화하거나 수치화해 두었나요?' },
+    { q: '팀원들이 그 기준을 알고 있고, 업무 판단에 실제로 쓰고 있나요?' }] },
+  { n: 6, label: '규율 설정', acts: [
+    { q: '팀의 목적·목표·성과를 효율적이고 효과적으로 달성하기 위한 행동 강령(팀 규율)을 정해 두었나요?' },
+    { q: '규율이 지켜지지 않을 때 넘어가지 않고 바로잡고 있나요?' }] },
+  { n: 7, label: '자원 확보 및 분배', acts: [
+    { q: '팀 목표에 필요한 예산·인력·시간을 먼저 계산해 회사에 요청하고, 부족하면 무엇을 안 할지 우선순위로 결정하고 있나요?' },
+    { q: '확보한 자원을 팀의 우선순위와 팀원의 역량에 맞게 배분하고, 낭비되는 자원이 없는지 점검하고 있나요?' }] },
+  { n: 8, label: '팀원 훈련 (마이크로매니징 및 코칭)', acts: [
+    { q: '팀원마다 키워야 할 역량을 정해 두고, 마이크로매니징(가까이서 가르치기)과 코칭을 의도적으로 써서 훈련하고 있나요?' },
+    { q: '훈련의 결과로 팀원이 맡을 수 있는 일의 범위와 수준이 실제로 올라가고 있나요?' }] },
+  { n: 9, label: '팀원 동기부여', acts: [
+    { q: '팀원마다 무엇에 동기가 생기는지(성장·인정·보상·자율 등)를 알고 있고, 잘한 일은 그 주 안에 구체적으로 인정하고 있나요?' },
+    { q: '팀원이 하는 일이 팀 목표·회사 미션과 어떻게 이어지는지 설명해 주고 있나요?' }] },
+  { n: 10, label: '평가 및 보상', acts: [
+    { q: '팀원의 성과와 역량을 관계나 인상이 아니라 사실과 근거에 따라 정확하게 평가하고 있나요?' },
+    { q: '평가 결과에 맞게 보상·역할·기회를 차등해서 주고 있나요?' }] },
+  { n: 11, label: '인재밀도 관리', acts: [
+    { q: '미흡한 팀원에게는 분명하게 지적하고, 잘하는 팀원은 더 높은 수준으로 끌어올리도록 훈련하고 있나요?' },
+    { q: '변하지 않는 팀원에게는 용기 내어 이별을 고하고, 나보다 뛰어난 인재를 채용하고 있나요?', na: true }] },
+  { n: 12, label: '팀 지표 관리', acts: [
+    { q: '팀의 핵심 지표 3–5개를 정해 두고, 주 단위로 숫자를 확인해 팀원과 공유하고 있나요?' },
+    { q: '지표가 기준을 벗어나면 원인 분석과 대응을 그 주 안에 시작하고 있나요?' }] },
+  { n: 13, label: '팀 수준 높이기', acts: [
+    { q: '팀 수준을 높이기 위한 행동(기준 상향, 교육, 프로세스 개선 등)을 정해진 주기로 하고 있나요?' },
+    { q: '그 결과로 팀 결과물의 수준이 지난 분기보다 실제로 올라갔나요?' }] }
+];
+ITEMS.forEach(it => it.acts.forEach(a => { a.opts = a.opts || EXEC3; a.na = !!a.na; }));
+const ITEM_LABELS = ITEMS.map(i => i.label);
+const ITEM_COUNT = ITEMS.length; // 13
+const PREF10 = ['커뮤니케이션 능력', '논리력', '판단력', '비즈니스 이해', '리스크테이킹', '자기관리', '모범성', '성숙함', '카리스마', '로열티'];
+const CATS10 = ['에고이즘 리더상 자체 (필수 조건·우대 조건의 의미)', '팀 빌딩·채용·인재밀도', '팀원 훈련·코칭·피드백', '평가·보상', '목표·지표·마감 관리', '기준·규율·팀 룰', '동기부여', '자원 확보·분배 (예산·인력·다른 팀과의 협업)', '포지션·L&D·기대치 설정', '기타'];
+// 행동 답변 → 점수(1–3). 보기에 없는 값(해당 없음·빈값)은 0
+const actNum = (act, text) => { const i = act.opts.indexOf(text); return i < 0 ? 0 : i + 1; };
+const SCALE5_ENDS = ['전혀 그렇지 않다', '매우 그렇다'];
+const SCALE5_LABELS = { 1: '전혀 그렇지 않다', 2: '그렇지 않다', 3: '보통이다', 4: '그렇다', 5: '매우 그렇다' };
+const fmt5 = v => (v >= 1 && v <= 5) ? v + '점 (' + SCALE5_LABELS[v] + ')' : (v == null || v === '' ? '—' : String(v));
+// 행동 질문 항목 정의 생성 (사전·4주 후 공통 base 'q2_2_')
+function actItems(base, noPrefix) { return ITEMS.map(it => ({ id: base + it.n, no: noPrefix + it.n, type: 'acts', label: it.label, acts: it.acts.map((a, k) => ({ id: base + it.n + '_' + (k + 1), q: a.q, opts: a.opts, na: a.na })), required: true })); }
+const avgOf = arr => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null;
+// Part 2 리더상 자가진단 — 사전 설문과 4주 후 설문이 같은 문항·번호·ID 를 쓴다 (대표님 요청: 동일 템플릿). 2-3-3 은 사전 설문에만
+function part2Section(forPre) {
+  const items = [
+    { type: 'heading', label: '2-1. 필수 조건' },
+    ...MUST4.map(m => ({ id: 'q2_1_' + m.n, no: '2-1-' + m.n, type: 'scale5', label: m.label, desc: m.desc, required: true })),
+    { type: 'heading', label: '2-2. 리더라면 해야 하는 것', note: '항목마다 행동 질문 2개에 각각 답합니다. 지금 내 팀에서 실제로 일어나고 있는지로 답해 주세요.' },
+    ...actItems('q2_2_', '2-2-'),
+    { id: 'q2_2_14', no: '2-2-14', type: 'multi', label: ITEM_COUNT + '개 중 지금 가장 어려운 것은 무엇인가요? (최대 3개)', options: ITEM_LABELS, max: 3, required: true },
+    { id: 'q2_2_15', no: '2-2-15', type: 'single', label: ITEM_COUNT + '개 중 가장 자신 있는 것은 무엇인가요? (1개)', options: ITEM_LABELS, required: true },
+    { type: 'heading', label: '2-3. 우대 조건' },
+    { id: 'q2_3_1', no: '2-3-1', type: 'multi', label: '리더로서 본인의 강점이라고 생각하는 것 (최대 3개)', options: PREF10, max: 3, required: true },
+    { id: 'q2_3_2', no: '2-3-2', type: 'multi', label: '보완이 가장 필요하다고 생각하는 것 (최대 3개)', options: PREF10, max: 3, required: true }
+  ];
+  if (forPre) items.push(
+    { id: 'q2_3_3', no: '2-3-3', type: 'single', label: '대표님이 발표에서 예시로 꼭 다뤄 주셨으면 하는 우대 조건 (1개)', options: PREF10, required: true },
+    { id: 'q2_3_3_reason', no: '', type: 'text', label: '그 이유', placeholder: '예: 우리 팀에서 가장 부족하다고 느껴서', required: true });
+  return { id: 'p2', title: 'Part 2. 에고이즘 리더상 자가진단', note: forPre ? '점수는 평가에 쓰이지 않고 교육 설계에만 쓰입니다. 지금 내 팀에서 실제로 되고 있는 정도를 골라 주세요.' : '사전 설문과 같은 문항입니다. 지난 4주 기준으로 지금 내 팀에서 실제로 되고 있는 정도를 골라 주세요. 점수는 평가에 쓰이지 않고 교육 설계에만 쓰입니다.', items };
+}
+
+/* ───────────── 설문 정의 ───────────── */
+const SURVEYS = {
+  pre: {
+    key: 'pre', title: '리더 교육 사전 설문', short: '사전 설문', minutes: 15, deadline: CONFIG.DEADLINE.pre,
+    intro: [
+      '안녕하세요, 리더 여러분. ' + CONFIG.TRAINING_DATE + ' 리더 교육은 대표님께서 직접 진행하십니다.',
+      '1시간은 에고이즘 리더상(필수 조건·해야 하는 것·우대 조건)을 Good case와 Bad case로 설명하는 설명으로 진행하고, 1시간은 여러분이 가져온 질문으로 QnA와 토론을 진행합니다.',
+      '이 설문은 QnA 시간에 다룰 질문을 모으고, 리더들이 지금 어떤 어려움을 겪고 있는지 파악하기 위한 것입니다.',
+      '정답이 있는 설문이 아니니 솔직하게 적어 주시면 됩니다. 약 15분 소요되며, ' + CONFIG.DEADLINE.pre + '까지 응답 부탁드립니다.'
+    ],
+    sections: [
+      { id: 'p1', title: 'Part 1. 기본 정보', items: [
+        { id: 'q1_3', no: '1-3', type: 'single', label: '에고이즘에서 리더 역할을 맡은 기간', options: ['6개월 미만', '6개월–1년', '1–2년', '2년 이상'], required: true },
+        { id: 'q1_4', no: '1-4', type: 'single', label: '현재 팀원 수 (본인 제외)', options: ['1–3명', '4–6명', '7명 이상'], required: true },
+        { id: 'q1_5', no: '1-5', type: 'single', label: '팀 안에 같은 직무의 팀원이 2명 이상 있다', options: ['예', '아니오'], required: true }
+      ] },
+      part2Section(true),
+      { id: 'p3', title: 'Part 3. 현재 겪고 있는 어려움', note: '단어가 아니라 상황을 적어 주세요. 언제, 무슨 일이 있었고, 그래서 어떻게 했는지가 들어가면 좋습니다.', items: [
+        { id: 'q3_1', no: '3-1', type: 'textarea', label: '지금 팀을 운영하면서 가장 큰 고민 한 가지는 무엇인가요? 언제, 무슨 일이 있었고, 지금은 어떻게 하고 계신가요?', required: true, rows: 6 },
+        { id: 'q3_2', no: '3-2', type: 'single', label: '같은 직무를 가진 팀원들의 포지션은 현재 어떤 상태인가요?', options: ['명확히 나뉘어 있다', '일부만 나뉘어 있다', '나뉘어 있지 않다', '같은 직무 팀원이 없어 해당 없음'], layout: 'col', required: true },
+        { id: 'q3_2_1', no: '3-2-1', type: 'textarea', label: '포지션을 나누기 어려운 이유는 무엇인가요?', showIf: { id: 'q3_2', in: ['일부만 나뉘어 있다', '나뉘어 있지 않다'] }, required: true, rows: 3 },
+        { id: 'q3_3', no: '3-3', type: 'textarea', label: '리더 역할을 하면서 회사(대표님·HR·다른 팀)로부터 가장 필요한 지원은 무엇인가요?', required: true, rows: 3 }
+      ] },
+      { id: 'p4', title: 'Part 4. 대표님께 묻고 싶은 질문 (QnA 시간용)', note: 'QnA 1시간은 여기서 모인 질문만으로 운영합니다. 추상적인 질문보다 지금 팀에서 실제로 막히는 상황을 적어 주세요. 대표님이 직접 답합니다. 질문 1개는 필수, 최대 3개까지입니다.', items: [
+        { id: 'q4_1_1', no: '4-1-1', type: 'textarea', label: '질문 1: 대표님께 묻고 싶은 질문을 적어 주세요', required: true, rows: 3 },
+        { id: 'q4_1_2', no: '4-1-2', type: 'select', label: '질문 1의 카테고리', options: CATS10, required: true },
+        { id: 'q4_1_3', no: '4-1-3', type: 'textarea', label: '질문 1을 하게 된 배경 상황 (어떤 일이 있었는지)', required: true, rows: 3 },
+        { id: 'q4_2_1', no: '4-2-1', type: 'textarea', label: '질문 2 (선택)', rows: 3 },
+        { id: 'q4_2_2', no: '4-2-2', type: 'select', label: '질문 2의 카테고리 (선택)', options: CATS10 },
+        { id: 'q4_3_1', no: '4-3-1', type: 'textarea', label: '질문 3 (선택)', rows: 3 },
+        { id: 'q4_3_2', no: '4-3-2', type: 'select', label: '질문 3의 카테고리 (선택)', options: CATS10 },
+        { id: 'q4_4', no: '4-4', type: 'textarea', label: '리더들끼리 토론해 보고 싶은 주제가 있다면 적어 주세요', required: true, rows: 3 }
+      ] },
+      { id: 'p5', title: 'Part 5. 교육 기대사항 및 기타', note: '세 문항 모두 짧게 답해도 됩니다.', items: [
+        { id: 'q5_1', no: '5-1', type: 'textarea', label: '이번 교육이 끝났을 때 "이것 하나는 잘 배워가고 싶다"는 것은 무엇인가요?', required: true, rows: 3 },
+        { id: 'q5_2', no: '5-2', type: 'textarea', label: '에고이즘 리더상 중 지금 가장 헷갈리거나 어려운 부분이 있다면 솔직하게 적어 주세요', required: true, rows: 3 },
+        { id: 'q5_3', no: '5-3', type: 'textarea', label: '교육 진행 방식이나 HR에 전하고 싶은 기타 의견', required: true, rows: 3 }
+      ] }
+    ]
+  },
+  post: {
+    key: 'post', title: '리더 교육 직후 설문', short: '직후 설문', minutes: 10, deadline: CONFIG.DEADLINE.post,
+    intro: [
+      '오늘 리더 교육에 참석해 주셔서 감사합니다. 이 설문은 교육이 얼마나 도움이 됐는지, 에고이즘 리더상이 얼마나 명확해졌는지 확인하기 위한 것입니다.',
+      '약 10분 소요되며, 기억이 생생할 때 답해 주시는 게 가장 정확합니다. ' + CONFIG.DEADLINE.post + '까지 부탁드립니다.'
+    ],
+    sections: [
+      { id: 'p2', title: 'Part 2. 교육 반응', items: [
+        { id: 'q2_1', no: '2-1', type: 'scale5', label: '이 교육은 내가 리더 역할을 하는 데 도움이 됐다', required: true },
+        { id: 'q2_2', no: '2-2', type: 'scale5', label: '에고이즘 리더상(필수 조건·해야 하는 것·우대 조건)이 명확하게 전달되었다', required: true },
+        { id: 'q2_3', no: '2-3', type: 'scale5', label: 'Good case·Bad case가 실제 우리 팀 상황과 가까웠다', required: true },
+        { id: 'q2_4', no: '2-4', type: 'scale5', label: 'QnA·토론에서 나온 답이 실제 판단에 쓸 수 있을 만큼 구체적이었다', required: true },
+        { id: 'q2_5', no: '2-5', type: 'scale5', label: '시간 배분(발표 1시간 + QnA·토론 1시간)이 적절했다', required: true },
+        { id: 'q2_6', no: '2-6', type: 'scale5', label: '비슷한 형식의 리더 교육이 다시 열리면 참석하겠다', required: true },
+        { id: 'q2_7', no: '2-7', type: 'single', label: '가장 도움이 된 부분 하나를 골라 주세요', options: ['리더상 설명', 'Good case', 'Bad case', 'QnA 답변', '리더 간 토론', '기타'], required: true },
+        { id: 'q2_8', no: '2-8', type: 'textarea', label: '가장 아쉬웠던 부분과 그 이유', required: true, rows: 3 }
+      ] },
+      { id: 'p3', title: 'Part 3. 이해도 (리더상이 명확해졌는가)', items: [
+        { id: 'q3_1', no: '3-1', type: 'textarea', label: '자료를 보지 않고, 에고이즘의 리더상을 한 문장으로 적어 주세요', required: true, rows: 2 },
+        { id: 'q3_2', no: '3-2', type: 'scale5', label: '리더의 필수 조건 4가지를 내 말로 설명할 수 있다', required: true },
+        { id: 'q3_3', no: '3-3', type: 'scale5', label: '리더라면 해야 하는 것 ' + ITEM_COUNT + '가지가 어떤 행동으로 나타나는지 설명할 수 있다', required: true },
+        { id: 'q3_4', no: '3-4', type: 'scale5', label: '우대 조건 10가지가 왜 에고이즘에서 중요한지 설명할 수 있다', required: true },
+        { id: 'q3_5', no: '3-5', type: 'scale5', label: '사전 설문에서 "이것 하나는 잘 배워가고 싶다"고 적은 것을 교육을 통해 배웠다', required: true, ctx: { key: 'pre_q5_1', title: '사전 설문에서 내가 적은 "잘 배워가고 싶은 것"' } },
+        { id: 'q3_6', no: '3-6', type: 'scale5', label: '사전 설문에서 "헷갈리거나 어렵다"고 적은 부분이 해소되었다', required: true, na: '적은 것 없음', naUnlessCtx: 'pre_q5_2', ctx: { key: 'pre_q5_2', title: '사전 설문에서 내가 적은 "헷갈리거나 어려운 부분"' } },
+        { id: 'q3_7', no: '3-7', type: 'textarea', label: '교육 후에도 여전히 모호하거나 어려운 부분이 있다면 적어 주세요', required: true, rows: 3 },
+        { id: 'q3_8', no: '3-8', type: 'single', label: '사전 설문에 낸 내 질문이 교육에서 다뤄졌나요?', options: ['다뤄졌고 답이 충분했다', '다뤄졌지만 답이 부족했다', '다뤄지지 않았다'], layout: 'col', required: true, ctx: { key: 'pre_q4_1_1', title: '사전 설문에서 내가 낸 질문' } },
+        { id: 'q3_9', no: '3-9', type: 'textarea', label: '어떤 점이 부족했고, 어떤 질문이 남았나요?', showIf: { id: 'q3_8', in: ['다뤄졌지만 답이 부족했다', '다뤄지지 않았다'] }, required: true, rows: 3 }
+      ] },
+      { id: 'p4', title: 'Part 4. 적용 계획', note: '여기서 적은 행동 하나를 4주 후 설문에서 "했는가"로 다시 묻습니다. 여러 개가 아니라 딱 하나만, 기한과 함께 적어 주세요.', items: [
+        { id: 'q4_1', no: '4-1', type: 'single', label: '리더라면 해야 하는 것 ' + ITEM_COUNT + '가지 중, 교육 후 가장 먼저 바꿀 행동은 무엇인가요?', options: ITEM_LABELS, layout: 'col', required: true },
+        { id: 'q4_2', no: '4-2', type: 'textarea', label: '구체적으로 무엇을, 언제까지 할 건가요? 다른 사람이 봐도 "했다/안 했다"를 알 수 있게 적어 주세요', placeholder: '예: 11/5까지 팀 룰을 글로 정리해 팀 채널에 공유한다', required: true, rows: 3 },
+        { id: 'q4_3', no: '4-3', type: 'scale5', label: '교육 전과 비교해 내 팀 운영에서 무엇을 바꿔야 하는지 분명해졌다', required: true },
+        { id: 'q4_4', no: '4-4', type: 'textarea', label: '4-2를 실행하는 데 회사나 HR의 지원이 필요하다면 적어 주세요', required: true, rows: 3 }
+      ] },
+      { id: 'p5', title: 'Part 5. 개선 의견', items: [
+        { id: 'q5_1', no: '5-1', type: 'multi', label: '다음 리더 교육에서 다뤘으면 하는 주제 (최대 2개)', options: ['1on1·피드백 기법', '기준 미달 팀원 대응', '포지션·기대치 설정', '팀 지표 설계', '채용·면접', '동기부여', '리더 간 사례 공유', '기타'], max: 2, required: true },
+        { id: 'q5_2', no: '5-2', type: 'single', label: '다음 리더 교육에 가장 적합한 형식', options: ['대표님 강연 + QnA', '외부 강사 집합 교육', '리더 워크숍(토론 중심)', '기타'], layout: 'col', required: true },
+        { id: 'q5_2_etc', no: '', type: 'text', label: '기타: 어떤 형식인지 적어 주세요', placeholder: '예: 외부 리더들과의 교류 세션', showIf: { id: 'q5_2', in: ['기타'] }, required: true },
+        { id: 'q5_3', no: '5-3', type: 'textarea', label: '교육 운영이나 HR에 전하고 싶은 기타 의견', required: true, rows: 3 }
+      ] }
+    ]
+  },
+  follow: {
+    key: 'follow', title: '리더 교육 4주 후 추적 설문', short: '4주 후 설문', minutes: 12, deadline: CONFIG.DEADLINE.follow,
+    intro: [
+      '리더 교육이 끝나고 4주가 지났습니다. 교육의 진짜 효과는 행동이 바뀌었는지로 판단하기 때문에, 사전 설문과 같은 리더상 자가진단을 한 번 더 하고 교육 직후 적어 주신 적용 계획을 실행하셨는지 확인합니다.',
+      '약 12분 소요됩니다. ' + CONFIG.DEADLINE.follow + '까지 부탁드립니다.'
+    ],
+    sections: [
+      part2Section(false),
+      { id: 'p3', title: 'Part 3. 적용 계획과 변화', items: [
+        { id: 'f3', no: '3-1', type: 'single', label: '교육 직후 적어 주셨던 적용 계획을 실행하셨나요?', options: ['계획대로 했다', '일부 했다', '시작하지 못했다'], required: true, ctx: { key: 'post_plan', title: '교육 직후 내가 적은 적용 계획' } },
+        { id: 'f4', no: '3-2', type: 'textarea', label: '실행하면서 막힌 점, 또는 시작하지 못한 이유', required: true, rows: 3 },
+        { id: 'f5', no: '3-3', type: 'textarea', label: '교육 후 4주 동안 팀 운영에서 실제로 달라진 것 한 가지 (없으면 "없음")', required: true, rows: 3 },
+        { id: 'f6', no: '3-4', type: 'scale5', label: '팀원들도 그 변화를 느꼈을 것이라고 생각한다', required: true },
+        { id: 'f8', no: '3-5', type: 'textarea', label: '리더상대로 팀을 운영하는 데 추가로 필요한 지원이나 후속 교육', required: true, rows: 3 }
+      ] }
+    ]
+  }
+};
+const SURVEY_ORDER = ['pre', 'post', 'follow'];
+function allItems(def) { const out = []; def.sections.forEach(s => s.items.forEach(it => { if (it.id) out.push(it); })); return out; }
+// 답변 ID(행동 질문 포함)로 소속 문항 찾기
+function ownerOf(def, id) { return allItems(def).find(x => x.id === id || (x.acts && x.acts.some(a => a.id === id))); }
+function itemAnswered(it) { return it.type === 'acts' ? it.acts.every(a => !isEmpty(S.answers[a.id])) : !isEmpty(S.answers[it.id]); }
+// 응답 열(CSV·시트) 목록: 행동 질문은 각각 한 열
+function flatCols(def) { const cols = []; allItems(def).forEach(it => { if (it.type === 'acts') it.acts.forEach((a, k) => cols.push({ id: a.id, head: it.no + ' ' + it.label + ' ' + (k + 1) + ') ' + a.q })); else cols.push({ id: it.id, head: (it.no ? it.no + ' ' : '') + it.label }); }); return cols; }
+
+/* ───────────── 유틸 ───────────── */
+const $ = (s, el) => (el || document).querySelector(s);
+const $$ = (s, el) => Array.from((el || document).querySelectorAll(s));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const nowISO = () => new Date().toISOString();
+function fmtDate(iso) { if (!iso) return ''; const d = new Date(iso); if (isNaN(d)) return String(iso); return d.getMonth() + 1 + '/' + d.getDate() + ' ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+let toastT; function toast(m) { const t = $('#toast'); t.textContent = m; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
+function lsGet(k, d) { try { const v = localStorage.getItem(k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } }
+function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+function isEmpty(v) { return v == null || v === '' || (Array.isArray(v) && v.length === 0); }
+function fmtVal(v) { if (Array.isArray(v)) return v.join(' | '); return v == null ? '' : String(v); }
+
+/* ───────────── 메타인지(자가진단 vs 대표 평가) 계산 ───────────── */
+// 5점 척도는 범위 4, 3단계는 범위 2. 일치도 = 평균(1 - |차이|/범위) × 100
+function diffClass(d, range) { if (d === 0) return 'match'; if (Math.abs(d) === 1 && range === 4) return 'near'; return d > 0 ? 'over' : 'under'; }
+function compareRound(round, resp, ev) {
+  // resp: 리더 응답 answers, ev: 대표 ratings.
+  // 사전·4주 후 라운드 모두 같은 키: 필수 조건 q2_1_n (1–5) + 행동 질문 q2_2_n_k (아니다 1 · 일부만 2 · 그렇다 3) + 우대 조건 q2_3_1/2
+  // 대표 평가 키는 e2_1_n / e2_2_n_k / strengths / weaknesses. "해당 없음"은 비교에서 제외.
+  const rows = [], items = []; let sum = 0, n = 0;
+  {
+    MUST4.forEach(m => {
+      const a = Number(resp && resp['q2_1_' + m.n]) || 0, c = Number(ev && ev['e2_1_' + m.n]) || 0;
+      const row = { key: 'q2_1_' + m.n, ekey: 'e2_1_' + m.n, label: m.label, type: 'scale5', self: a, ceo: c, range: 4 };
+      if (a && c) { row.diff = a - c; row.cls = diffClass(row.diff, 4); sum += 1 - Math.abs(row.diff) / 4; n++; }
+      rows.push(row);
+    });
+  }
+  ITEMS.forEach(it => {
+    const itemRows = [];
+    it.acts.forEach((act, k) => {
+      const sk = 'q2_2_' + it.n + '_' + (k + 1), ek = 'e2_2_' + it.n + '_' + (k + 1);
+      const st = resp && resp[sk] || '', ct = ev && ev[ek] || '';
+      const a = actNum(act, st), c = actNum(act, ct);
+      const row = { key: sk, ekey: ek, item: it.n, k, label: it.label + ' ' + (k + 1) + ')', q: act.q, opts: act.opts, type: 'exec3', self: a, ceo: c, selfText: st, ceoText: ct, range: 2, na: act.na };
+      if (a && c) { row.diff = a - c; row.cls = diffClass(row.diff, 2); sum += 1 - Math.abs(row.diff) / 2; n++; }
+      rows.push(row); itemRows.push(row);
+    });
+    const selfAvg = avgOf(itemRows.map(r => r.self).filter(Boolean)), ceoAvg = avgOf(itemRows.map(r => r.ceo).filter(Boolean));
+    items.push({ n: it.n, label: it.label, selfAvg, ceoAvg, diff: selfAvg != null && ceoAvg != null ? selfAvg - ceoAvg : null });
+  });
+  const cnt = { match: 0, near: 0, over: 0, under: 0 };
+  rows.forEach(r => { if (r.cls) cnt[r.cls]++; });
+  const score = n ? Math.round(sum / n * 100) : null;
+  const big = rows.filter(r => r.cls && r.cls !== 'match' && r.cls !== 'near').sort((a, b) => Math.abs(b.diff) - Math.abs(a.diff)).slice(0, 3);
+  let strengthOverlap = null, weakOverlap = null, hardOverlap = null;
+  if (resp && ev) {
+    const inter = (a, b) => (a || []).filter(x => (b || []).includes(x));
+    if (ev.strengths && ev.strengths.length) strengthOverlap = inter(resp.q2_3_1, ev.strengths);
+    if (ev.weaknesses && ev.weaknesses.length) weakOverlap = inter(resp.q2_3_2, ev.weaknesses);
+  }
+  if (resp && ev) {
+    const hardSelf = resp.q2_2_14 || [];
+    const hardCeo = items.filter(x => x.ceoAvg != null && x.ceoAvg < 2).map(x => x.label); // 대표가 "아니다" 쪽으로 본 항목
+    if (hardCeo.length) hardOverlap = { self: hardSelf, ceo: hardCeo, common: hardSelf.filter(x => hardCeo.includes(x)) };
+  }
+  return { rows, items, cnt, score, n, big, strengthOverlap, weakOverlap, hardOverlap };
+}
+
+/* ───────────── API (실서버: Apps Script) ───────────── */
+const RealAPI = {
+  async call(method, params, body) {
+    let lastErr;
+    for (let i = 0; i < 3; i++) {
+      try {
+        const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 25000);
+        const url = CONFIG.API_URL + (method === 'GET' ? '?' + new URLSearchParams(params).toString() : '');
+        const r = await fetch(url, method === 'GET' ? { signal: ctl.signal, redirect: 'follow' } : { method: 'POST', body: JSON.stringify(body), headers: { 'Content-Type': 'text/plain;charset=utf-8' }, signal: ctl.signal, redirect: 'follow' });
+        clearTimeout(t);
+        const txt = await r.text();
+        let j; try { j = JSON.parse(txt); } catch (e) { throw Object.assign(new Error('서버 응답 오류 — Apps Script 배포 설정(실행: 나 / 액세스: 모든 사용자)을 확인하세요'), { transient: true }); }
+        if (!j.ok) throw new Error(j.error || '요청 실패');
+        return j;
+      } catch (e) {
+        lastErr = e;
+        if (e.name === 'AbortError' || e.transient || /fetch/i.test(String(e.message))) { await new Promise(r => setTimeout(r, 1500 * (i + 1))); continue; }
+        throw e;
+      }
+    }
+    throw lastErr;
+  },
+  get(params) { return this.call('GET', params); },
+  post(body) { return this.call('POST', null, body); }
+};
+
+/* ───────────── 데모 API (localStorage) — build.py 가 DEMO-START~DEMO-END 를 배포판에서 제거 ───────────── */
+/* demo code removed by build.py */
+// 직후·4주 후 설문에서 보여줄 본인의 이전 응답 (서버 code.gs 의 contextFor 와 동일한 규칙)
+function contextFor(resp, survey, name) {
+  const ctx = {};
+  if (survey === 'post') { const p = resp.pre && resp.pre[name]; if (p) { ctx.pre_q5_1 = p.answers.q5_1 || ''; ctx.pre_q5_2 = p.answers.q5_2 || ''; ctx.pre_q4_1_1 = p.answers.q4_1_1 || ''; } }
+  if (survey === 'follow') { const p = resp.post && resp.post[name]; if (p) ctx.post_plan = (p.answers.q4_1 ? '[' + p.answers.q4_1 + '] ' : '') + (p.answers.q4_2 || ''); }
+  return ctx;
+}
+const API = (typeof LocalAPI !== 'undefined' && DEMO) ? LocalAPI : RealAPI;
+
+/* ───────────── 상태 ───────────── */
+const S = {
+  route: 'home', state: null, stateErr: null,
+  survey: null, step: 'gate', me: { name: '', team: '', pin: '', custom: false }, answers: {}, ctx: {}, newPin: true, existing: false, busy: false, errors: {},
+  auth: lsGet('lsv_auth', null), // {key, role}
+  ceo: { data: null, loading: false, err: null, tab: 'summary', sel: null, sub: 'cmp', round: 'pre', draft: null, drafts: null },
+  admin: { tab: 'status' }
+};
+
+/* ───────────── 라우팅 ───────────── */
+function route() {
+  const h = location.hash.replace(/^#\/?/, '');
+  const r = h.split('?')[0] || 'home';
+  S.route = ['pre', 'post', 'follow', 'ceo', 'admin'].includes(r) ? r : 'home';
+  if (['pre', 'post', 'follow'].includes(S.route)) { if (S.survey !== S.route) { S.survey = S.route; S.step = 'gate'; S.answers = {}; S.ctx = {}; S.errors = {}; } }
+  render();
+  window.scrollTo(0, 0);
+}
+window.addEventListener('hashchange', route);
+
+async function loadState() {
+  try { S.state = await API.get({ action: 'state' }); S.stateErr = null; }
+  catch (e) { S.stateErr = e.message; S.state = null; }
+}
+
+/* ───────────── 렌더 ───────────── */
+function render() {
+  $('#nav').innerHTML = SURVEY_ORDER.map(k => `<a href="#/${k}" class="${S.route === k ? 'on' : ''}">${SURVEYS[k].short}</a>`).join('') + `<a href="#/ceo" class="${S.route === 'ceo' ? 'on' : ''}">대표님</a>`;
+  const app = $('#app');
+  if (S.route === 'home') app.innerHTML = viewHome();
+  else if (S.route === 'ceo') app.innerHTML = viewCeo();
+  else if (S.route === 'admin') app.innerHTML = viewAdmin();
+  else app.innerHTML = viewSurvey();
+  if (DEMO && !$('.demo')) { const d = document.createElement('div'); d.className = 'demo'; d.innerHTML = '<b>DEMO</b> 데이터는 이 브라우저에만 저장 · 대표 비밀번호 <b>ceo</b> · HR <b>admin</b> · PIN <b>0000</b>'; document.body.appendChild(d); }
+  afterRender();
+}
+
+function viewHome() {
+  const st = S.state;
+  const cards = SURVEY_ORDER.map(k => {
+    const def = SURVEYS[k]; const open = st && st.surveys[k] && st.surveys[k].open;
+    return `<div class="card"><div class="eyebrow">${k === 'pre' ? '교육 전' : k === 'post' ? '교육 직후' : '교육 4주 후'}</div><h2>${esc(def.title)}</h2>
+      <p class="muted small">약 ${def.minutes}분 · 마감 ${esc(def.deadline)}</p>
+      <div class="row">${open ? `<a class="btn pri" href="#/${k}">응답하기</a><span class="badge ok">진행 중</span>` : `<button class="btn" disabled>준비 중</button><span class="badge gray">${st ? '아직 열리지 않음' : '…'}</span>`}</div></div>`;
+  }).join('');
+  return `<div class="hero"><div class="eyebrow">EGOIDSM LEADERSHIP</div><h1>${esc(CONFIG.TRAINING_DATE)} 리더 교육 설문</h1>
+    <p class="muted">대표님께서 직접 진행하시는 리더 교육의 사전·직후·4주 후 설문입니다. 응답은 대표님과 HR만 열람하며, 평가 자료로 쓰이지 않습니다.</p></div>
+    ${S.stateErr ? `<div class="notice bad">서버에 연결할 수 없습니다: ${esc(S.stateErr)} <button class="btn xs" data-act="reload">다시 시도</button></div>` : ''}
+    <div class="grid c3">${cards}</div>
+    <div class="card flat"><h3>응답 방법</h3><p class="small muted">이름을 고르고 숫자 4자리 PIN을 정하면 시작됩니다. PIN은 나중에 응답을 수정하거나 직후·4주 후 설문에서 본인의 이전 응답을 다시 볼 때 씁니다. 작성 중인 내용은 이 브라우저에 자동 저장됩니다.</p></div>`;
+}
+
+/* ───────────── 설문 화면 ───────────── */
+function viewSurvey() {
+  const def = SURVEYS[S.survey]; const st = S.state; const open = st && st.surveys[S.survey] && st.surveys[S.survey].open;
+  const head = `<div class="eyebrow">${S.survey === 'pre' ? '교육 전' : S.survey === 'post' ? '교육 직후' : '교육 4주 후'} · 약 ${def.minutes}분</div><h1>${esc(def.title)}</h1>`;
+  if (S.stateErr) return head + `<div class="notice bad">서버에 연결할 수 없습니다: ${esc(S.stateErr)} <button class="btn xs" data-act="reload">다시 시도</button></div>`;
+  if (!st) return head + `<div class="center" style="padding:40px"><span class="spin"></span></div>`;
+  if (!open) return head + `<div class="card"><p>이 설문은 아직 열리지 않았거나 마감되었습니다. HR에 문의해 주세요.</p><a class="btn" href="#/">홈으로</a></div>`;
+  if (S.step === 'gate') return head + viewGate(def);
+  if (S.step === 'done') return head + `<div class="card center" style="padding:40px 20px"><div class="badge ok" style="font-size:14px">제출 완료</div><h2 style="margin:12px 0 6px">${esc(S.me.name)}님, 감사합니다.</h2><p class="muted">응답이 저장되었습니다. 마감 전에는 같은 이름과 PIN으로 다시 들어와 수정할 수 있습니다.</p><div class="row" style="justify-content:center;margin-top:14px"><button class="btn" data-act="edit-again">응답 수정하기</button><a class="btn pri" href="#/">홈으로</a></div></div>`;
+  return head + viewForm(def);
+}
+function viewGate(def) {
+  const leaders = (S.state.leaders || []);
+  const opts = leaders.map(l => `<option value="${esc(l.name)}" data-team="${esc(l.team || '')}" ${S.me.name === l.name && !S.me.custom ? 'selected' : ''}>${esc(l.name)}${l.team ? ' · ' + esc(l.team) : ''}</option>`).join('');
+  return `<div class="card">${def.intro.map(p => `<p>${esc(p)}</p>`).join('')}</div>
+  <div class="card narrow"><h2>본인 확인</h2><p class="muted small">실명으로 응답합니다. 응답은 대표님과 HR만 열람합니다.</p>
+    <div class="field"><label class="lbl">이름</label>
+      ${leaders.length ? `<select class="inp" id="g-name"><option value="">선택하세요</option>${opts}<option value="__custom" ${S.me.custom ? 'selected' : ''}>목록에 없음 (직접 입력)</option></select>` : ''}
+      <input class="inp" id="g-name-custom" placeholder="이름" value="${esc(S.me.custom || !leaders.length ? S.me.name : '')}" style="${leaders.length && !S.me.custom ? 'display:none;' : ''}margin-top:6px"></div>
+    <div class="field"><label class="lbl">소속 팀</label><input class="inp" id="g-team" placeholder="예: 퓌라" value="${esc(S.me.team)}"></div>
+    <div class="field"><label class="lbl">PIN (숫자 4자리)</label><input class="inp" id="g-pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="처음이면 새로 정하세요" value="${esc(S.me.pin)}" autocomplete="off">
+      <p class="small muted" style="margin:6px 0 0">처음 응답할 때 정한 PIN을 이후 설문과 응답 수정에 계속 씁니다. 잊으면 HR에 초기화를 요청하세요.</p></div>
+    <div class="notice bad" id="g-err" style="display:none"></div>
+    <div class="row"><button class="btn pri" data-act="gate-go" ${S.busy ? 'disabled' : ''}>${S.busy ? '<span class="spin"></span> 확인 중' : '시작하기'}</button></div></div>`;
+}
+function visible(it) {
+  if (!it.showIf) return true;
+  const v = S.answers[it.showIf.id];
+  if (it.showIf.nonEmpty) return !isEmpty(v);
+  return (it.showIf.in || []).includes(v);
+}
+function requiredProgress(def) {
+  let need = 0, done = 0; const perSec = [];
+  def.sections.forEach(s => { let n = 0, d = 0; s.items.forEach(it => { if (!it.id || !it.required || !visible(it)) return; n++; if (itemAnswered(it)) d++; }); need += n; done += d; perSec.push({ id: s.id, title: s.title.split('.')[0], n, d }); });
+  return { need, done, perSec };
+}
+function viewForm(def) {
+  const pr = requiredProgress(def);
+  const pct = pr.need ? Math.round(pr.done / pr.need * 100) : 0;
+  const secs = def.sections.map(s => `<div class="sec" id="sec-${s.id}"><div class="eyebrow">${esc(s.title.split('.')[0])}</div><h2>${esc(s.title.replace(/^[^.]+\.\s*/, ''))}</h2>${s.note ? `<p class="note">${esc(s.note)}</p>` : ''}</div>` + s.items.map(renderItem).join('')).join('');
+  return `<div class="progress"><div class="row between"><div><b>${esc(S.me.name)}</b> <span class="muted small">${esc(S.me.team)}</span>${S.existing ? ' <span class="badge blue">이전 응답 불러옴</span>' : ''}</div><div class="small muted" id="req-cnt">필수 ${pr.done}/${pr.need}</div></div>
+    <div class="bar"><i style="width:${pct}%"></i></div>
+    <div class="parts">${pr.perSec.map(p => `<a href="#sec-${p.id}" data-act="jump" class="${p.n && p.d >= p.n ? 'done' : ''}">${esc(p.title)} ${p.d}/${p.n}</a>`).join('')}</div></div>
+    <div id="form">${secs}</div>
+    <div class="submitbar"><div class="row between"><button class="btn ghost" data-act="back-gate">본인 확인으로</button><div class="row"><span class="small muted" id="sub-msg"></span><button class="btn pri" data-act="submit" ${S.busy ? 'disabled' : ''}>${S.busy ? '<span class="spin"></span> 저장 중' : '제출하기'}</button></div></div></div>`;
+}
+function renderItem(it) {
+  if (it.type === 'heading') return `<div class="hd"><h3>${esc(it.label)}</h3>${it.note ? `<p class="note">${esc(it.note)}</p>` : ''}</div>`;
+  if (it.type === 'context') { const v = S.ctx[it.key]; return `<div class="ctx"><div class="t">${esc(it.title)}</div><div class="v">${v ? esc(v) : '<span class="muted">(사전 응답이 없거나 비어 있습니다)</span>'}</div></div>`; }
+  if (!visible(it)) return `<div class="q" data-q="${it.id}" style="display:none"></div>`;
+  const v = S.answers[it.id];
+  let ctl = '';
+  if (it.type === 'acts') {
+    const acts = it.acts.map((a, k) => { const av = S.answers[a.id]; return `<div class="act"><div class="aq"><span class="an">${k + 1}</span><span>${esc(a.q)}</span></div><div class="ctl"><div class="seg">${a.opts.map(o => `<button type="button" class="${av === o ? 'on' : ''}" data-set="${a.id}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div>${a.na ? `<button type="button" class="chip nachip ${av === NA ? 'on' : ''}" data-set="${a.id}" data-val="${esc(NA)}">${NA}</button>` : ''}</div></div>`; }).join('');
+    return `<div class="q ${S.errors[it.id] ? 'err' : ''}" data-q="${it.id}"><div class="lab">${it.no ? `<span class="no">${esc(it.no)}</span>` : ''}<span>${esc(it.label)}</span>${it.required ? '<span class="req">필수</span>' : ''}</div><div class="acts">${acts}</div><div class="errmsg">두 질문 모두 답해 주세요.</div></div>`;
+  }
+  // na: "적은 것 없음" 같은 예외 보기. naUnlessCtx 가 있으면 그 이전 응답(컨텍스트)이 비어 있을 때만 보여 준다
+  const naOk = it.na && !(it.naUnlessCtx && !isEmpty(S.ctx[it.naUnlessCtx]));
+  if (it.type === 'scale5') ctl = `<div class="scale5">${[1, 2, 3, 4, 5].map(n => `<button type="button" class="${v === n ? 'on' : ''}" data-set="${it.id}" data-val="${n}">${esc(SCALE5_LABELS[n])}</button>`).join('')}</div>${naOk ? `<div class="ends"><button type="button" class="chip nachip ${v === it.na ? 'on' : ''}" data-set="${it.id}" data-val="${esc(it.na)}">${esc(it.na)}</button></div>` : ''}`;
+  else if (it.type === 'select') ctl = `<select class="inp" data-select="${it.id}"><option value="">선택하세요</option>${it.options.map(o => `<option value="${esc(o)}" ${v === o ? 'selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+  else if (it.type === 'single') ctl = `<div class="chips ${it.layout === 'col' ? 'col' : ''}">${it.options.map(o => `<button type="button" class="chip ${v === o ? 'on' : ''}" data-set="${it.id}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+  else if (it.type === 'multi') { const arr = Array.isArray(v) ? v : []; const full = it.max && arr.length >= it.max; ctl = `<div class="chips">${it.options.map(o => { const on = arr.includes(o); return `<button type="button" class="chip ${on ? 'on' : ''} ${!on && full ? 'off' : ''}" data-toggle="${it.id}" data-val="${esc(o)}" data-max="${it.max || 0}">${esc(o)}</button>`; }).join('')}</div><div class="small muted" style="margin-top:6px">${arr.length}/${it.max || it.options.length} 선택</div>`; }
+  else if (it.type === 'text') ctl = `<input class="inp" data-input="${it.id}" value="${esc(v || '')}" placeholder="${esc(it.placeholder || '')}">`;
+  else if (it.type === 'textarea') ctl = `<textarea class="inp" data-input="${it.id}" rows="${it.rows || 4}" placeholder="${esc(it.placeholder || '')}">${esc(v || '')}</textarea>`;
+  const main = `<div class="lab">${it.no ? `<span class="no">${esc(it.no)}</span>` : ''}<span>${esc(it.label)}</span>${it.required ? '<span class="req">필수</span>' : ''}</div>${it.desc ? `<div class="desc">${esc(it.desc)}</div>` : ''}${ctl}<div class="errmsg">필수 문항입니다.</div>`;
+  if (it.ctx) { const cv = S.ctx[it.ctx.key]; return `<div class="q withmemo ${S.errors[it.id] ? 'err' : ''}" data-q="${it.id}"><div class="qmain">${main}</div><aside class="memo"><div class="t">${esc(it.ctx.title)}</div><div class="v">${cv ? esc(cv) : '<span class="muted">(이전 응답이 없거나 비어 있습니다)</span>'}</div></aside></div>`; }
+  return `<div class="q ${S.errors[it.id] ? 'err' : ''}" data-q="${it.id}">${main}</div>`;
+}
+function rerenderItem(id) {
+  const def = SURVEYS[S.survey]; const it = allItems(def).find(x => x.id === id); if (!it) return;
+  const el = $(`[data-q="${id}"]`); if (!el) return;
+  const tmp = document.createElement('div'); tmp.innerHTML = renderItem(it); el.replaceWith(tmp.firstElementChild);
+}
+function setAnswer(id, val) {
+  S.answers[id] = val;
+  const def = SURVEYS[S.survey];
+  const owner = ownerOf(def, id);
+  if (owner) { delete S.errors[owner.id]; rerenderItem(owner.id); }
+  allItems(def).filter(x => x.showIf && x.showIf.id === id).forEach(x => rerenderItem(x.id));
+  saveDraft(); updateProgress();
+}
+function updateProgress() {
+  const def = SURVEYS[S.survey]; const pr = requiredProgress(def); const pct = pr.need ? Math.round(pr.done / pr.need * 100) : 0;
+  const bar = $('.progress .bar i'); if (bar) bar.style.width = pct + '%';
+  const cnt = $('#req-cnt'); if (cnt) cnt.textContent = '필수 ' + pr.done + '/' + pr.need;
+  const parts = $('.progress .parts'); if (parts) parts.innerHTML = pr.perSec.map(p => `<a href="#sec-${p.id}" data-act="jump" class="${p.n && p.d >= p.n ? 'done' : ''}">${esc(p.title)} ${p.d}/${p.n}</a>`).join('');
+}
+function draftKey() { return 'lsv_draft_' + S.survey + '_' + S.me.name; }
+function saveDraft() { if (S.me.name) lsSet(draftKey(), { at: Date.now(), answers: S.answers }); }
+
+async function gateGo() {
+  const sel = $('#g-name'); const custom = $('#g-name-custom');
+  let name = '', team = $('#g-team').value.trim();
+  if (sel && sel.value && sel.value !== '__custom') { name = sel.value; S.me.custom = false; } else { name = (custom.value || '').trim(); S.me.custom = true; }
+  const pin = $('#g-pin').value.trim();
+  const err = $('#g-err'); err.style.display = 'none';
+  if (!name) { err.textContent = '이름을 입력해 주세요.'; err.style.display = ''; return; }
+  if (!/^\d{4}$/.test(pin)) { err.textContent = 'PIN은 숫자 4자리입니다.'; err.style.display = ''; return; }
+  S.me.name = name; S.me.team = team; S.me.pin = pin; S.busy = true; render();
+  try {
+    const r = await API.post({ action: 'load_mine', survey: S.survey, name, pin });
+    S.newPin = !!r.newPin; S.ctx = r.context || {};
+    const draft = lsGet(draftKey(), null);
+    if (r.answers) { S.answers = r.answers; S.existing = true; if (r.team && !team) S.me.team = r.team; }
+    else if (draft && draft.answers) { S.answers = draft.answers; S.existing = false; toast('작성하던 내용을 불러왔습니다'); }
+    else { S.answers = {}; S.existing = false; }
+    if (!S.me.team) { const l = (S.state.leaders || []).find(x => x.name === name); if (l) S.me.team = l.team || ''; }
+    S.errors = {}; S.step = 'form';
+  } catch (e) { err.textContent = e.message; S.busy = false; render(); $('#g-err').textContent = e.message; $('#g-err').style.display = ''; return; }
+  S.busy = false; render();
+}
+async function submitSurvey() {
+  const def = SURVEYS[S.survey]; S.errors = {};
+  allItems(def).forEach(it => { if (it.required && visible(it) && !itemAnswered(it)) S.errors[it.id] = true; });
+  const missing = Object.keys(S.errors);
+  if (missing.length) { missing.forEach(rerenderItem); const first = $(`[data-q="${missing[0]}"]`); if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' }); $('#sub-msg').textContent = '필수 문항 ' + missing.length + '개가 비어 있습니다.'; return; }
+  // 보이지 않는 조건부 문항의 값은 비움
+  allItems(def).forEach(it => { if (!visible(it)) delete S.answers[it.id]; });
+  S.busy = true; render();
+  try {
+    const r = await API.post({ action: 'submit', survey: S.survey, name: S.me.name, team: S.me.team, pin: S.me.pin, answers: S.answers });
+    lsDel(draftKey()); S.existing = true; S.step = 'done'; toast(r.updated ? '응답을 수정했습니다' : '응답을 제출했습니다');
+  } catch (e) { toast('저장 실패: ' + e.message); }
+  S.busy = false; render();
+}
+
+/* ───────────── 대표님 페이지 ───────────── */
+function roleOK(need) { const r = S.auth && S.auth.role; if (!r) return false; if (need === 'admin') return r === 'admin'; return r === 'admin' || r === 'ceo'; }
+function viewLogin(kind) {
+  return `<div class="card narrow" style="margin-top:20px"><h2>${kind === 'admin' ? 'HR 관리' : '대표님 페이지'}</h2><p class="muted small">${kind === 'admin' ? 'HR 관리 비밀번호를 입력하세요.' : '대표님 비밀번호를 입력하세요. HR 관리 비밀번호로도 들어올 수 있습니다.'}</p>
+    <div class="field"><input class="inp" id="login-key" type="password" placeholder="비밀번호" autocomplete="current-password"></div>
+    <div class="notice bad" id="login-err" style="display:none"></div>
+    <button class="btn pri" data-act="login" data-kind="${kind}" ${S.busy ? 'disabled' : ''}>${S.busy ? '<span class="spin"></span>' : '들어가기'}</button></div>`;
+}
+async function login(kind) {
+  const key = $('#login-key').value.trim(); const err = $('#login-err'); err.style.display = 'none';
+  if (!key) return;
+  S.busy = true; render();
+  try {
+    const r = await API.post({ action: 'ceo_login', key });
+    if (kind === 'admin' && r.role !== 'admin') throw new Error('HR 관리 비밀번호가 아닙니다');
+    S.auth = { key, role: r.role }; lsSet('lsv_auth', S.auth); S.ceo.data = r.data;
+  } catch (e) { S.busy = false; render(); $('#login-err').textContent = e.message; $('#login-err').style.display = ''; return; }
+  S.busy = false; render();
+}
+function logout() { S.auth = null; lsDel('lsv_auth'); S.ceo.data = null; S.ceo.sel = null; render(); }
+async function refreshCeo(silent) {
+  if (!S.auth || S.ceo.loading) return;
+  S.ceo.loading = true; S.ceo.err = null;
+  try { const r = await API.post({ action: 'ceo_state', key: S.auth.key }); S.ceo.data = r.data; S.auth.role = r.role; if (!silent) toast('새로고침했습니다'); }
+  catch (e) { if (/비밀번호|권한/.test(e.message)) { S.ceo.loading = false; logout(); return; } S.ceo.err = e.message; toast('불러오기 실패: ' + e.message); }
+  S.ceo.loading = false;
+  render();
+}
+function viewLoading() { return S.ceo.err ? `<div class="notice bad">불러오지 못했습니다: ${esc(S.ceo.err)} <button class="btn xs" data-act="ceo-refresh">다시 시도</button></div>` : `<div class="center" style="padding:40px"><span class="spin"></span></div>`; }
+function leaderRows(data) {
+  const names = new Set((data.leaders || []).map(l => l.name));
+  ['pre', 'post', 'follow'].forEach(k => Object.keys(data.responses[k] || {}).forEach(n => names.add(n)));
+  return Array.from(names).map(n => { const l = (data.leaders || []).find(x => x.name === n); const team = l ? l.team : ((data.responses.pre[n] || data.responses.post[n] || data.responses.follow[n] || {}).team || ''); return { name: n, team, pre: data.responses.pre[n], post: data.responses.post[n], follow: data.responses.follow[n], evPre: data.evals.pre[n], evFollow: data.evals.follow[n] }; });
+}
+function viewCeo() {
+  if (!roleOK('ceo')) return `<div class="eyebrow">CEO</div><h1>대표님 페이지</h1>` + viewLogin('ceo');
+  const data = S.ceo.data;
+  const top = `<div class="row between" style="margin-bottom:10px"><div><div class="eyebrow">CEO</div><h1 style="margin:2px 0">대표님 페이지</h1></div><div class="row"><button class="btn sm" data-act="ceo-refresh">새로고침</button>${S.auth.role === 'admin' ? '<a class="btn sm" href="#/admin">HR 관리</a>' : ''}<button class="btn sm ghost" data-act="logout">로그아웃</button></div></div>`;
+  if (!data) { if (!S.ceo.err) refreshCeo(true); return top + viewLoading(); }
+  const tabs = `<div class="tabs"><button class="${S.ceo.tab === 'summary' ? 'on' : ''}" data-act="ceo-tab" data-tab="summary">전체 요약</button><button class="${S.ceo.tab === 'leaders' ? 'on' : ''}" data-act="ceo-tab" data-tab="leaders">리더별 대조 평가</button></div>`;
+  return top + tabs + (S.ceo.tab === 'summary' ? viewCeoSummary(data) : viewCeoLeaders(data));
+}
+function viewCeoSummary(data) {
+  const rows = leaderRows(data);
+  const trs = rows.map(r => { const c = r.pre && r.evPre ? compareRound('pre', r.pre.answers, r.evPre.ratings) : null; return `<tr class="click" data-act="ceo-open" data-name="${esc(r.name)}"><td><b>${esc(r.name)}</b><div class="small muted">${esc(r.team)}</div></td><td>${r.pre ? '<span class="badge ok">제출</span>' : '<span class="badge gray">미제출</span>'}</td><td>${r.post ? '<span class="badge ok">제출</span>' : '<span class="badge gray">—</span>'}</td><td>${r.follow ? '<span class="badge ok">제출</span>' : '<span class="badge gray">—</span>'}</td><td>${dirtyFor(r.name).length ? '<span class="badge warn">작성 중 · 미저장</span>' : r.evPre ? '<span class="badge acc">완료' + (r.evPre.blind ? ' · 블라인드' : '') + '</span>' : '<span class="badge gray">미평가</span>'}</td><td class="num">${c && c.score != null ? '<b>' + c.score + '</b>' : '—'}</td><td class="num">${c ? c.cnt.over : '—'}</td><td class="num">${c ? c.cnt.under : '—'}</td></tr>`; }).join('');
+  // 항목별 평균 (사전 자가진단 vs 대표 평가, 둘 다 있는 리더만)
+  const both = rows.filter(r => r.pre && r.evPre);
+  const cmps = both.map(r => compareRound('pre', r.pre.answers, r.evPre.ratings));
+  const itemRows = ITEMS.map((it, i) => { const s = avgOf(cmps.map(c => c.items[i].selfAvg).filter(x => x != null)); const c = avgOf(cmps.map(x => x.items[i].ceoAvg).filter(x => x != null)); return { label: it.label, s, c, d: s != null && c != null ? s - c : null }; }).filter(x => x.d != null).sort((a, b) => Math.abs(b.d) - Math.abs(a.d));
+  const mustRows = MUST4.map(m => { const s = avgOf(both.map(r => Number(r.pre.answers['q2_1_' + m.n])).filter(Boolean)); const c = avgOf(both.map(r => Number(r.evPre.ratings['e2_1_' + m.n])).filter(Boolean)); return { label: m.label, s, c, d: s != null && c != null ? s - c : null }; }).filter(x => x.d != null);
+  const f1 = n => n == null ? '—' : n.toFixed(2);
+  const dBadge = d => d == null ? '' : d > 0.15 ? '<span class="badge warn">리더가 높게 봄</span>' : d < -0.15 ? '<span class="badge blue">리더가 낮게 봄</span>' : '<span class="badge ok">일치</span>';
+  return `<div class="card"><div class="row between"><h2>리더별 현황</h2><span class="legend"><b>일치도</b> = 항목별 (1 − |자가진단 − 대표 평가| ÷ 척도 범위) 평균 × 100 · <b>과대</b> 리더 자가진단이 대표 평가보다 높은 항목 수 · <b>과소</b> 낮은 항목 수</span></div>
+    <div class="tbwrap"><table class="tb"><thead><tr><th>리더</th><th>사전</th><th>직후</th><th>4주 후</th><th>대표 평가(사전)</th><th>일치도</th><th>과대</th><th>과소</th></tr></thead><tbody>${trs || '<tr><td colspan="8" class="muted">리더가 없습니다. HR 관리에서 리더 명단을 등록하세요.</td></tr>'}</tbody></table></div></div>
+    <div class="card"><h2>항목별 평균 비교 (자가진단 vs 대표 평가)</h2><p class="muted small">사전 설문과 대표 평가가 모두 있는 리더 ${both.length}명 기준. 해야 하는 것은 항목별 행동 질문 2개의 평균(아니다 1 · 일부만 2 · 그렇다 3), 필수 조건은 1–5점.</p>
+    ${both.length ? `<div class="tbwrap"><table class="tb"><thead><tr><th>필수 조건</th><th class="num">리더 평균</th><th class="num">대표 평균</th><th class="num">차이</th><th></th></tr></thead><tbody>${mustRows.map(x => `<tr><td>${esc(x.label)}</td><td class="num">${f1(x.s)}</td><td class="num">${f1(x.c)}</td><td class="num">${x.d > 0 ? '+' : ''}${f1(x.d)}</td><td>${dBadge(x.d)}</td></tr>`).join('')}</tbody></table>
+    <table class="tb" style="margin-top:14px"><thead><tr><th>해야 하는 것 (차이 큰 순)</th><th class="num">리더 평균</th><th class="num">대표 평균</th><th class="num">차이</th><th></th></tr></thead><tbody>${itemRows.map(x => `<tr><td>${esc(x.label)}</td><td class="num">${f1(x.s)}</td><td class="num">${f1(x.c)}</td><td class="num">${x.d > 0 ? '+' : ''}${f1(x.d)}</td><td>${dBadge(x.d)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="muted">아직 비교할 데이터가 없습니다. 리더별 대조 평가 탭에서 평가를 입력하면 여기에 집계됩니다.</p>'}</div>`;
+}
+function viewCeoLeaders(data) {
+  const rows = leaderRows(data); const sel = S.ceo.sel && rows.find(r => r.name === S.ceo.sel);
+  const list = `<div class="left ${sel ? 'hide' : ''}"><div class="leaderlist">${rows.map(r => { const dr = dirtyFor(r.name); return `<button data-act="ceo-open" data-name="${esc(r.name)}" class="${sel && sel.name === r.name ? 'on' : ''}"><span><span class="nm">${esc(r.name)}</span> <span class="tm">${esc(r.team)}</span>${dr.length ? ' <span class="badge warn" title="저장되지 않은 평가가 있습니다">작성 중</span>' : ''}</span><span class="st" title="사전 · 직후 · 4주 후 · 대표 평가"><i class="dotst ${r.pre ? 'on' : ''}"></i><i class="dotst ${r.post ? 'on' : ''}"></i><i class="dotst ${r.follow ? 'on' : ''}"></i><i class="dotst ${r.evPre ? 'on' : ''}" style="${r.evPre ? 'background:var(--acc)' : ''}"></i></span></button>`; }).join('') || '<p class="muted small">리더가 없습니다.</p>'}</div><p class="small muted" style="margin-top:8px">점: 사전 · 직후 · 4주 후 · 대표 평가</p>${dirtyCount() ? `<p class="small" style="margin-top:6px"><span class="badge warn">작성 중</span> 저장하지 않은 평가 ${dirtyCount()}건 — 리더를 열고 <b>평가 저장</b>을 눌러 주세요.</p>` : ''}</div>`;
+  let right = '';
+  if (!sel) right = `<div class="card flat center" style="padding:40px 20px"><p class="muted">왼쪽에서 리더를 선택하세요.</p></div>`;
+  else {
+    const sub = `<div class="row between" style="margin-bottom:8px"><div><button class="btn xs ghost" data-act="ceo-close" style="margin-right:6px">← 목록</button><b style="font-size:18px">${esc(sel.name)}</b> <span class="muted">${esc(sel.team)}</span></div></div>
+      <div class="tabs"><button class="${S.ceo.sub === 'cmp' ? 'on' : ''}" data-act="ceo-sub" data-sub="cmp">대조 평가</button><button class="${S.ceo.sub === 'pre' ? 'on' : ''}" data-act="ceo-sub" data-sub="pre">사전 응답</button><button class="${S.ceo.sub === 'post' ? 'on' : ''}" data-act="ceo-sub" data-sub="post">직후 응답</button><button class="${S.ceo.sub === 'follow' ? 'on' : ''}" data-act="ceo-sub" data-sub="follow">4주 후 응답</button></div>`;
+    right = sub + (S.ceo.sub === 'cmp' ? viewCompare(sel) : viewAnswers(sel, S.ceo.sub));
+  }
+  return `<div class="split">${list}<div>${right}</div></div>`;
+}
+// 대표님 평가 초안 — 리더·라운드별로 보관하고, 저장 전 변경분은 localStorage 에도 남겨 탭 이동·새로고침에도 사라지지 않게 한다 (대표님 피드백)
+const CEO_DRAFTS_KEY = 'lsv_ceo_drafts';
+function draftId(name, round) { return name + '|' + round; }
+function persistDrafts() { const dirty = {}; Object.keys(S.ceo.drafts || {}).forEach(k => { if (S.ceo.drafts[k].dirty) dirty[k] = S.ceo.drafts[k]; }); lsSet(CEO_DRAFTS_KEY, dirty); }
+function markDirty(d) { d.dirty = true; persistDrafts(); }
+function loadDrafts() { if (!S.ceo.drafts) S.ceo.drafts = lsGet(CEO_DRAFTS_KEY, {}) || {}; return S.ceo.drafts; }
+function dirtyFor(name) { const ds = loadDrafts(); return ['pre', 'follow'].filter(r => ds[draftId(name, r)] && ds[draftId(name, r)].dirty); }
+function dirtyCount() { const ds = loadDrafts(); return Object.keys(ds).filter(k => ds[k].dirty).length; }
+// 저장되지 않은 평가가 있으면 이동 전에 저장 여부를 묻는다 (확인: 저장 후 이동 / 취소: 저장하지 않고 이동, 입력값은 보관)
+async function guardLeave(next) {
+  const d = S.ceo.draft;
+  if (d && d.dirty && confirm(d.name + '님 ' + (d.round === 'pre' ? '사전' : '4주 후') + ' 평가에 저장하지 않은 변경이 있습니다.\n\n[확인] 저장하고 이동    [취소] 저장하지 않고 이동 (입력값은 이 브라우저에 보관됩니다)')) { await ceoSave(); }
+  next();
+}
+function ensureDraft(sel) {
+  const round = S.ceo.round; const k = draftId(sel.name, round);
+  loadDrafts();
+  let d = S.ceo.drafts[k];
+  if (!d) {
+    const ev = round === 'pre' ? sel.evPre : sel.evFollow;
+    d = { name: sel.name, round, ratings: JSON.parse(JSON.stringify(ev && ev.ratings || {})), comment: ev && ev.comment || '', blind: !ev, revealed: false, dirty: false }; // 이미 평가한 리더는 바로 대조 상태로
+    S.ceo.drafts[k] = d;
+  }
+  S.ceo.draft = d; return d;
+}
+function viewCompare(sel) {
+  const d = ensureDraft(sel); const round = d.round;
+  const resp = round === 'pre' ? sel.pre : sel.follow; const ev = round === 'pre' ? sel.evPre : sel.evFollow;
+  const hasFollow = !!sel.follow;
+  const roundSel = `<div class="row" style="margin-bottom:10px"><span class="small muted">비교 대상</span><div class="seg sm" style="display:inline-grid;grid-template-columns:1fr 1fr;width:auto"><button class="${round === 'pre' ? 'on' : ''}" data-act="ceo-round" data-round="pre" style="padding:6px 14px">사전 자가진단</button><button class="${round === 'follow' ? 'on' : ''}" data-act="ceo-round" data-round="follow" style="padding:6px 14px" ${hasFollow ? '' : 'disabled title="4주 후 응답이 아직 없습니다"'}>4주 후 자가진단</button></div></div>`;
+  if (!resp) return roundSel + `<div class="card flat"><p class="muted">${round === 'pre' ? '이 리더의 사전 설문 응답이 아직 없습니다. 응답이 들어오면 여기서 항목별로 대조할 수 있습니다.' : '4주 후 응답이 아직 없습니다.'}</p></div>`;
+  const hidden = d.blind; const r = d.ratings;
+  const selfCell = inner => hidden ? `<span class="hidden-val" title="저장 후 공개됩니다">00</span>` : inner;
+  const execBtns = (ek, cv, na, opts) => `<div class="seg sm ${na ? 'seg4' : ''}">${opts.concat(na ? [NA] : []).map(o => `<button type="button" class="${cv === o ? 'on' : ''} ${o === NA ? 'na' : ''}" data-rate="${ek}" data-val="${esc(o)}">${esc(o)}</button>`).join('')}</div>`;
+  const f2 = x => x == null ? '—' : x.toFixed(1);
+  const cmp = compareRound(round, resp.answers, r);
+  const diffCell = row => { if (hidden || !row.cls) return '<span class="muted">—</span>'; const m = { match: ['ok', '일치'], near: ['gray', '근접'], over: ['warn', '과대 +' + row.diff], under: ['blue', '과소 ' + row.diff] }[row.cls]; return `<span class="badge ${m[0]}">${m[1]}</span>`; };
+  let html = roundSel;
+  html += `<div class="notice ${hidden ? '' : 'blue'}" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap"><span style="flex:1">${hidden ? '<b>블라인드 평가</b> — 리더의 자가진단은 가려져 있습니다. 대표님 기준으로 먼저 평가하고 저장하면 대조 결과가 공개됩니다.' : '리더의 자가진단과 대표님 평가를 나란히 보고 있습니다.'}</span><button class="btn xs" data-act="ceo-reveal">${hidden ? '자가진단 미리 보기' : '다시 가리기'}</button></div>`;
+  {
+    html += `<div class="card"><h3>필수 조건 (1–5)</h3><div class="tbwrap"><table class="cmp"><thead><tr><th>항목</th><th>대표님 평가</th><th style="text-align:center">리더 자가진단</th><th style="text-align:center">차이</th></tr></thead><tbody>` + MUST4.map(m => { const row = cmp.rows.find(x => x.key === 'q2_1_' + m.n); const cv = Number(r['e2_1_' + m.n]) || 0; return `<tr><td class="it"><b>${esc(m.label)}</b><div class="d">${esc(m.desc)}</div></td><td class="ctl" style="min-width:330px"><div class="seg sm seg5">${[1, 2, 3, 4, 5].map(n => `<button type="button" class="${cv === n ? 'on' : ''}" data-rate="e2_1_${m.n}" data-val="${n}">${esc(SCALE5_LABELS[n])}</button>`).join('')}</div></td><td class="lv">${selfCell(row.self ? `<b>${row.self}점</b><div class="small muted">${esc(SCALE5_LABELS[row.self])}</div>` : '<span class="muted">—</span>')}</td><td class="df">${diffCell(row)}</td></tr>`; }).join('') + `</tbody></table></div></div>`;
+  }
+  html += `<div class="card"><h3>리더라면 해야 하는 것 (행동별: 아니다 / 일부만 / 그렇다)</h3><p class="small muted">각 행동이 이 리더의 팀에서 실제로 일어나고 있는지, 대표님이 보신 기준으로 골라 주세요. 아니다 1 · 일부만 2 · 그렇다 3점이고, 항목 줄의 평균은 행동 2개의 평균(1–3)입니다.</p><div class="tbwrap"><table class="cmp"><thead><tr><th>항목 · 행동</th><th>대표님 평가</th><th style="text-align:center">리더 자가진단</th><th style="text-align:center">차이</th></tr></thead><tbody>` + ITEMS.map((it, i) => {
+    const item = cmp.items[i];
+    const itemBadge = item.diff == null ? '' : Math.abs(item.diff) < 0.75 ? '<span class="badge ok">일치</span>' : item.diff > 0 ? '<span class="badge warn">리더가 높게 봄</span>' : '<span class="badge blue">리더가 낮게 봄</span>';
+    const grp = `<tr class="grp"><td colspan="4"><b>${esc('2-2-' + it.n)} ${esc(it.label)}</b>${!hidden && (item.selfAvg != null || item.ceoAvg != null) ? ` <span class="small muted" style="margin-left:8px">리더 평균 ${f2(item.selfAvg)} · 대표 평균 ${f2(item.ceoAvg)}</span> ${itemBadge}` : ''}</td></tr>`;
+    const acts = it.acts.map((act, k) => { const row = cmp.rows.find(x => x.key === 'q2_2_' + it.n + '_' + (k + 1)); const cv = r[row.ekey] || ''; return `<tr><td class="it"><span class="an">${k + 1}</span> ${esc(act.q)}</td><td class="ctl">${execBtns(row.ekey, cv, row.na, act.opts)}</td><td class="lv">${selfCell(row.selfText ? `<b class="${row.self === 3 ? 'ok-t' : row.self === 1 ? 'bad-t' : ''}">${esc(row.selfText)}</b>` : '<span class="muted">—</span>')}</td><td class="df">${diffCell(row)}</td></tr>`; }).join('');
+    return grp + acts;
+  }).join('') + `</tbody></table></div></div>`;
+  {
+    const chips = (key, arr) => PREF10.map(o => { const on = (r[key] || []).includes(o); const full = (r[key] || []).length >= 3; return `<button type="button" class="chip ${on ? 'on' : ''} ${!on && full ? 'off' : ''}" style="padding:5px 11px;font-size:13px" data-ratetoggle="${key}" data-val="${esc(o)}">${esc(o)}</button>`; }).join('');
+    const selfList = (arr, ov) => hidden ? '<span class="hidden-val">0000</span>' : (arr || []).map(x => `<span class="badge ${ov && ov.includes(x) ? 'ok' : 'gray'}">${esc(x)}</span>`).join(' ') || '<span class="muted">—</span>';
+    html += `<div class="card"><h3>우대 조건</h3><div class="grid c2"><div><div class="small muted" style="font-weight:700;margin-bottom:6px">대표님이 보는 이 리더의 강점 (최대 3개)</div><div class="chips">${chips('strengths')}</div><div class="small" style="margin-top:8px">리더 본인이 꼽은 강점: ${selfList(resp.answers.q2_3_1, cmp.strengthOverlap)}</div></div>
+      <div><div class="small muted" style="font-weight:700;margin-bottom:6px">대표님이 보는 보완 필요 (최대 3개)</div><div class="chips">${chips('weaknesses')}</div><div class="small" style="margin-top:8px">리더 본인이 꼽은 보완점: ${selfList(resp.answers.q2_3_2, cmp.weakOverlap)}</div></div></div></div>`;
+  }
+  // 요약
+  if (!hidden) {
+    const big = cmp.big.map(b => `<li><b>${esc(b.label)}</b>${b.q ? ` <span class="small muted">${esc(b.q)}</span>` : ''}<br>리더 ${esc(b.type === 'exec3' ? b.selfText : fmt5(b.self))} · 대표 ${esc(b.type === 'exec3' ? b.ceoText : fmt5(b.ceo))} <span class="badge ${b.cls === 'over' ? 'warn' : 'blue'}">${b.cls === 'over' ? '리더가 높게 봄' : '리더가 낮게 봄'}</span></li>`).join('');
+    const hardSelf = resp.answers.q2_2_14 || [];
+    html += `<div class="card"><h3>메타인지 요약</h3><p class="small muted">일치도는 필수 조건 4개와 행동 질문 ${ITEM_COUNT * 2}개 각각의 (1 − |자가진단 − 대표 평가| ÷ 척도 범위) 평균입니다. 100이면 모든 항목에서 본인 인식과 대표님 인식이 같다는 뜻입니다. "해당 없음"은 계산에서 뺍니다. ${cmp.n ? '' : '대표님 평가를 입력하면 계산됩니다.'}</p>
+      <div class="stat"><div class="s"><div class="k">일치도</div><div class="v">${cmp.score != null ? cmp.score : '—'}<small>/100</small></div></div><div class="s"><div class="k">일치 · 근접</div><div class="v">${cmp.cnt.match}<small> · ${cmp.cnt.near}</small></div></div><div class="s"><div class="k">과대 (리더가 높게)</div><div class="v" style="color:var(--warn)">${cmp.cnt.over}</div></div><div class="s"><div class="k">과소 (리더가 낮게)</div><div class="v" style="color:var(--blue)">${cmp.cnt.under}</div></div></div>
+      ${big ? `<div style="margin-top:12px"><div class="small muted" style="font-weight:700">인식 차이가 가장 큰 항목</div><ul style="margin:4px 0 0;padding-left:18px">${big}</ul></div>` : ''}
+      ${cmp.strengthOverlap ? `<div class="small" style="margin-top:10px">강점 인식 겹침 <b>${cmp.strengthOverlap.length}/3</b> · 보완점 인식 겹침 <b>${cmp.weakOverlap ? cmp.weakOverlap.length : 0}/3</b></div>` : ''}
+      ${cmp.hardOverlap ? `<div class="small" style="margin-top:6px">리더가 꼽은 가장 어려운 것: ${hardSelf.map(x => `<span class="badge ${cmp.hardOverlap.common.includes(x) ? 'ok' : 'gray'}">${esc(x)}</span>`).join(' ') || '—'} · 대표님이 "아니다" 쪽으로 본 항목 ${cmp.hardOverlap.ceo.length}개 중 겹침 <b>${cmp.hardOverlap.common.length}</b></div>` : ''}</div>`;
+  }
+  html += `<div class="card"><h3>코멘트</h3><textarea class="inp" id="ceo-comment" rows="3" placeholder="이 리더에 대한 메모 (HR과 공유됩니다)">${esc(d.comment)}</textarea>
+    <div class="row between" style="margin-top:10px"><span class="small muted">${ev ? '마지막 저장 ' + fmtDate(ev.evaluatedAt) + (ev.blind ? ' · 블라인드로 평가됨' : '') : '아직 저장하지 않았습니다'}${d.dirty ? ' · <b>저장되지 않은 변경</b>' : ''}</span><button class="btn pri" data-act="ceo-save" ${S.busy ? 'disabled' : ''}>${S.busy ? '<span class="spin"></span> 저장 중' : '평가 저장'}</button></div></div>`;
+  if (d.dirty) html += `<div class="savebar"><span><b>저장되지 않은 평가</b>가 있습니다. 입력값은 이 브라우저에 보관되지만, 다른 기기나 HR 집계에는 저장을 눌러야 반영됩니다.</span><button class="btn pri" data-act="ceo-save" ${S.busy ? 'disabled' : ''}>평가 저장</button></div>`;
+  return html;
+}
+function viewAnswers(sel, kind) {
+  const resp = sel[kind]; const def = SURVEYS[kind];
+  if (!resp) return `<div class="card flat"><p class="muted">${esc(def.short)} 응답이 아직 없습니다.</p></div>`;
+  const a = resp.answers || {};
+  let html = `<div class="card"><div class="row between"><h3 style="margin:0">${esc(def.title)}</h3><span class="small muted">제출 ${fmtDate(resp.submittedAt)}${resp.updatedAt && resp.updatedAt !== resp.submittedAt ? ' · 수정 ' + fmtDate(resp.updatedAt) : ''}</span></div></div>`;
+  if (kind === 'post' && S.ceo.data.config && !S.ceo.data.config.ceoSeesReaction && S.auth.role === 'ceo') html += `<div class="notice">Part 2 교육 반응(만족도) 점수는 HR 집계로만 보고됩니다.</div>`;
+  def.sections.forEach(s => {
+    const items = s.items.filter(it => it.id && (it.type === 'acts' ? it.acts.some(x => !isEmpty(a[x.id])) : !isEmpty(a[it.id])));
+    if (!items.length) return;
+    html += `<div class="card"><div class="eyebrow">${esc(s.title.split('.')[0])}</div><h3>${esc(s.title.replace(/^[^.]+\.\s*/, ''))}</h3>` + items.map(it => {
+      const head = `<div class="k">${esc(it.no ? it.no + ' ' : '')}${esc(it.label)}</div>${it.desc ? `<div class="small muted" style="margin:0 0 4px">${esc(it.desc)}</div>` : ''}`;
+      if (it.type === 'acts') return `<div class="ans">${head}${it.acts.map((x, k) => { const sc = actNum(x, a[x.id]); return `<div class="v" style="margin:4px 0 0 2px"><span class="an">${k + 1}</span> <span class="muted">${esc(x.q)}</span> <b class="${sc === 3 ? 'ok-t' : sc === 1 ? 'bad-t' : ''}">${esc(a[x.id] || '—')}</b></div>`; }).join('')}</div>`;
+      let v = a[it.id]; if (it.type === 'scale5') v = typeof v === 'number' ? fmt5(v) : v;
+      return `<div class="ans">${head}<div class="v">${esc(fmtVal(v))}</div></div>`;
+    }).join('') + `</div>`;
+  });
+  return html;
+}
+async function ceoSave() {
+  const d = S.ceo.draft; if (!d) return;
+  d.comment = ($('#ceo-comment') || {}).value || d.comment;
+  const blindAtSave = d.blind && !d.revealed;
+  S.busy = true; render();
+  try {
+    await API.post({ action: 'ceo_eval', key: S.auth.key, round: d.round, name: d.name, ratings: d.ratings, comment: d.comment, blind: blindAtSave });
+    delete S.ceo.drafts[draftId(d.name, d.round)]; persistDrafts(); S.ceo.draft = null; toast('평가를 저장했습니다'); // 저장본에서 다시 만들어짐(대조 공개 상태)
+    const r = await API.post({ action: 'ceo_state', key: S.auth.key }); S.ceo.data = r.data;
+  } catch (e) { toast('저장 실패: ' + e.message); }
+  S.busy = false; render();
+}
+
+/* ───────────── HR 관리 ───────────── */
+function viewAdmin() {
+  if (!roleOK('admin')) return `<div class="eyebrow">HR</div><h1>HR 관리</h1>` + viewLogin('admin');
+  const data = S.ceo.data;
+  const top = `<div class="row between" style="margin-bottom:10px"><div><div class="eyebrow">HR</div><h1 style="margin:2px 0">HR 관리</h1></div><div class="row"><button class="btn sm" data-act="ceo-refresh">새로고침</button><a class="btn sm" href="#/ceo">대표님 페이지</a><button class="btn sm ghost" data-act="logout">로그아웃</button></div></div>`;
+  if (!data) { if (!S.ceo.err) refreshCeo(true); return top + viewLoading(); }
+  const t = S.admin.tab;
+  const tabs = `<div class="tabs">${[['status', '응답 현황'], ['settings', '설정'], ['export', '내보내기']].map(x => `<button class="${t === x[0] ? 'on' : ''}" data-act="admin-tab" data-tab="${x[0]}">${x[1]}</button>`).join('')}</div>`;
+  let body = '';
+  if (t === 'status') {
+    const rows = leaderRows(data);
+    const cell = (r, k) => r[k] ? `<span class="badge ok" title="${esc(fmtDate(r[k].submittedAt))}">제출</span> <button class="btn xs ghost danger" data-act="admin-del" data-survey="${k}" data-name="${esc(r.name)}">삭제</button>` : '<span class="badge gray">—</span>';
+    body = `<div class="card"><p class="small muted">설문별 제출 여부입니다. 삭제는 되돌릴 수 없습니다. PIN 초기화 후에는 리더가 다음 응답 때 새 PIN을 정합니다.</p><div class="tbwrap"><table class="tb"><thead><tr><th>리더</th><th>사전</th><th>직후</th><th>4주 후</th><th>대표 평가</th><th>PIN</th></tr></thead><tbody>${rows.map(r => `<tr><td><b>${esc(r.name)}</b><div class="small muted">${esc(r.team)}</div></td><td>${cell(r, 'pre')}</td><td>${cell(r, 'post')}</td><td>${cell(r, 'follow')}</td><td>${r.evPre || r.evFollow ? `<span class="badge acc">${r.evPre ? '사전' : ''}${r.evPre && r.evFollow ? '·' : ''}${r.evFollow ? '4주' : ''}</span> <button class="btn xs ghost danger" data-act="admin-del" data-survey="eval" data-name="${esc(r.name)}">삭제</button>` : '<span class="badge gray">—</span>'}</td><td>${(data.pins || []).includes(r.name) ? `<button class="btn xs" data-act="admin-pin" data-name="${esc(r.name)}">초기화</button>` : '<span class="small muted">미등록</span>'}</td></tr>`).join('') || '<tr><td colspan="6" class="muted">리더 명단이 비어 있습니다. 설정 탭에서 등록하세요.</td></tr>'}</tbody></table></div></div>`;
+  } else if (t === 'settings') {
+    const cfg = data.config || {}; const open = cfg.openSurveys || [];
+    body = `<div class="card"><h3>열려 있는 설문</h3><p class="small muted">체크된 설문만 리더가 응답할 수 있습니다. 마감하면 체크를 해제하세요.</p><div class="row">${SURVEY_ORDER.map(k => `<label class="chip ${open.includes(k) ? 'on' : ''}" style="cursor:pointer"><input type="checkbox" data-open="${k}" ${open.includes(k) ? 'checked' : ''} style="display:none">${SURVEYS[k].short}</label>`).join('')}</div></div>
+      <div class="card"><h3>대표님 열람 범위</h3><label class="row" style="cursor:pointer"><input type="checkbox" id="cfg-react" ${cfg.ceoSeesReaction ? 'checked' : ''}> 직후 설문 Part 2 교육 반응(만족도) 점수를 대표님 페이지에도 보여줌</label><p class="small muted" style="margin:6px 0 0">기본은 끔. 발표자가 대표님이라 실명 점수가 보이면 솔직한 응답이 줄어듭니다. 집계값은 아래 내보내기로 HR이 봅니다.</p></div>
+      <div class="card"><h3>리더 명단</h3><p class="small muted">한 줄에 한 명, <code>이름, 팀</code> 형식. 설문 첫 화면의 이름 목록으로 쓰입니다.</p><textarea class="inp" id="cfg-leaders" rows="8">${esc((cfg.leaders || data.leaders || []).map(l => l.name + (l.team ? ', ' + l.team : '')).join('\n'))}</textarea></div>
+      <div class="row"><button class="btn pri" data-act="admin-save" ${S.busy ? 'disabled' : ''}>설정 저장</button>${DEMO ? '<button class="btn danger" data-act="demo-reset">데모 데이터 초기화</button>' : ''}</div>`;
+  } else {
+    body = `<div class="card"><h3>CSV 내보내기</h3><p class="small muted">Excel에서 바로 열립니다(UTF-8 BOM). 복수 선택은 " | "로 이어 붙입니다. 실서버에서는 Google Sheets 에도 같은 내용이 설문별 탭으로 쌓입니다.</p><div class="row">${SURVEY_ORDER.map(k => `<button class="btn" data-act="export" data-kind="${k}">${SURVEYS[k].short}</button>`).join('')}<button class="btn" data-act="export" data-kind="eval">대표 평가 · 대조 결과</button></div></div>`;
+  }
+  return top + tabs + body;
+}
+function csvDownload(name, rows) {
+  const q = v => { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const txt = '﻿' + rows.map(r => r.map(q).join(',')).join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([txt], { type: 'text/csv;charset=utf-8' })); a.download = name; document.body.appendChild(a); a.click(); a.remove();
+}
+function exportCsv(kind) {
+  const data = S.ceo.data; const rows = leaderRows(data);
+  if (kind === 'eval') {
+    const actCols = []; ITEMS.forEach(i => i.acts.forEach((q, k) => actCols.push({ n: i.n, k: k + 1, head: i.label + ' ' + (k + 1) + ') (리더/대표)' })));
+    const head = ['이름', '팀', '라운드', '평가일시', '블라인드', '일치도', '일치', '근접', '과대', '과소', ...MUST4.map(m => '필수 ' + m.label + ' (리더/대표)'), ...actCols.map(c => c.head), '리더 강점', '대표가 본 강점', '리더 보완점', '대표가 본 보완점', '코멘트'];
+    const out = [head];
+    rows.forEach(r => ['pre', 'follow'].forEach(round => { const ev = round === 'pre' ? r.evPre : r.evFollow; const resp = round === 'pre' ? r.pre : r.follow; if (!ev) return; const c = compareRound(round, resp && resp.answers, ev.ratings);
+      out.push([r.name, r.team, round === 'pre' ? '사전' : '4주 후', fmtDate(ev.evaluatedAt), ev.blind ? 'Y' : 'N', c.score == null ? '' : c.score, c.cnt.match, c.cnt.near, c.cnt.over, c.cnt.under,
+        ...MUST4.map(m => (resp && resp.answers['q2_1_' + m.n] || '') + ' / ' + (ev.ratings['e2_1_' + m.n] || '')),
+        ...actCols.map(ac => (resp && resp.answers['q2_2_' + ac.n + '_' + ac.k] || '') + ' / ' + (ev.ratings['e2_2_' + ac.n + '_' + ac.k] || '')),
+        fmtVal(resp && resp.answers.q2_3_1), fmtVal(ev.ratings.strengths), fmtVal(resp && resp.answers.q2_3_2), fmtVal(ev.ratings.weaknesses), ev.comment || '']); }));
+    return csvDownload('리더교육_대표평가_대조.csv', out);
+  }
+  const def = SURVEYS[kind]; const cols = flatCols(def);
+  const out = [['이름', '팀', '제출일시', '수정일시', ...cols.map(c => c.head)]];
+  rows.forEach(r => { const resp = r[kind]; if (!resp) return; out.push([r.name, r.team, fmtDate(resp.submittedAt), fmtDate(resp.updatedAt), ...cols.map(c => fmtVal(resp.answers[c.id]))]); });
+  csvDownload('리더교육_' + def.short.replace(/\s/g, '') + '.csv', out);
+}
+async function adminSave() {
+  const open = $$('[data-open]').filter(x => x.checked).map(x => x.dataset.open);
+  const leaders = $('#cfg-leaders').value.split('\n').map(l => l.trim()).filter(Boolean).map(l => { const p = l.split(/[,，\t]/); return { name: p[0].trim(), team: (p[1] || '').trim() }; }).filter(l => l.name);
+  const patch = { openSurveys: open, ceoSeesReaction: $('#cfg-react').checked, leaders };
+  S.busy = true; render();
+  try { await API.post({ action: 'admin_config', key: S.auth.key, patch }); toast('설정을 저장했습니다'); await loadState(); const r = await API.post({ action: 'ceo_state', key: S.auth.key }); S.ceo.data = r.data; }
+  catch (e) { toast('저장 실패: ' + e.message); }
+  S.busy = false; render();
+}
+
+/* ───────────── 이벤트 ───────────── */
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-set],[data-toggle],[data-act],[data-rate],[data-ratetoggle]'); if (!b) return;
+  if (b.dataset.set) { const raw = b.dataset.val; const it = ownerOf(SURVEYS[S.survey], b.dataset.set); let val = raw; if (it && it.type === 'scale5' && /^[1-5]$/.test(raw)) val = Number(raw); if (S.answers[b.dataset.set] === val) val = ''; setAnswer(b.dataset.set, val); return; }
+  if (b.dataset.toggle) { const id = b.dataset.toggle, v = b.dataset.val, max = Number(b.dataset.max) || 0; let arr = Array.isArray(S.answers[id]) ? S.answers[id].slice() : []; if (arr.includes(v)) arr = arr.filter(x => x !== v); else { if (max && arr.length >= max) { toast('최대 ' + max + '개까지 선택할 수 있습니다'); return; } arr.push(v); } setAnswer(id, arr); return; }
+  if (b.dataset.rate) { const d = S.ceo.draft; if (!d) return; const k = b.dataset.rate; const raw = b.dataset.val; const val = /^e2_1_/.test(k) ? Number(raw) : raw; d.ratings[k] = d.ratings[k] === val ? '' : val; markDirty(d); render(); return; }
+  if (b.dataset.ratetoggle) { const d = S.ceo.draft; if (!d) return; const k = b.dataset.ratetoggle, v = b.dataset.val; let arr = Array.isArray(d.ratings[k]) ? d.ratings[k].slice() : []; if (arr.includes(v)) arr = arr.filter(x => x !== v); else { if (arr.length >= 3) { toast('최대 3개'); return; } arr.push(v); } d.ratings[k] = arr; markDirty(d); render(); return; }
+  const act = b.dataset.act;
+  if (act === 'jump') { e.preventDefault(); const el = $(b.getAttribute('href')); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
+  if (act === 'reload') { await loadState(); render(); return; }
+  if (act === 'gate-go') return gateGo();
+  if (act === 'back-gate') { saveDraft(); S.step = 'gate'; render(); return; }
+  if (act === 'submit') return submitSurvey();
+  if (act === 'edit-again') { S.step = 'form'; render(); return; }
+  if (act === 'login') return login(b.dataset.kind);
+  if (act === 'logout') { const n = dirtyCount(); if (n && !confirm('저장하지 않은 평가가 ' + n + '건 있습니다. 로그아웃해도 이 브라우저에는 보관되지만, HR 집계에는 저장을 눌러야 반영됩니다.\n\n그래도 로그아웃할까요?')) return; return logout(); }
+  if (act === 'ceo-refresh') return refreshCeo();
+  if (act === 'ceo-tab') { const tab = b.dataset.tab; if (tab === S.ceo.tab) return; return guardLeave(() => { S.ceo.tab = tab; render(); }); }
+  if (act === 'ceo-open') { const name = b.dataset.name; if (S.ceo.sel === name && S.ceo.tab === 'leaders') { S.ceo.sub = 'cmp'; render(); return; } return guardLeave(() => { S.ceo.tab = 'leaders'; S.ceo.sel = name; S.ceo.sub = 'cmp'; render(); }); }
+  if (act === 'ceo-close') return guardLeave(() => { S.ceo.sel = null; render(); });
+  if (act === 'ceo-sub') { S.ceo.sub = b.dataset.sub; render(); return; }
+  if (act === 'ceo-round') { if (b.disabled) return; const round = b.dataset.round; if (round === S.ceo.round) return; return guardLeave(() => { S.ceo.round = round; render(); }); }
+  if (act === 'ceo-reveal') { const d = S.ceo.draft; if (!d) return; if (d.blind) { d.blind = false; d.revealed = true; } else d.blind = true; if (d.dirty) persistDrafts(); render(); return; }
+  if (act === 'ceo-save') return ceoSave();
+  if (act === 'admin-tab') { S.admin.tab = b.dataset.tab; render(); return; }
+  if (act === 'admin-save') return adminSave();
+  if (act === 'export') return exportCsv(b.dataset.kind);
+  if (act === 'admin-pin') { if (!confirm(b.dataset.name + '님의 PIN을 초기화할까요? 다음 응답 때 새 PIN을 정하게 됩니다.')) return; try { await API.post({ action: 'admin_reset_pin', key: S.auth.key, name: b.dataset.name }); toast('PIN을 초기화했습니다'); await refreshCeo(true); } catch (err) { toast(err.message); } return; }
+  if (act === 'admin-del') { const k = b.dataset.survey; if (!confirm(b.dataset.name + '님의 ' + (k === 'eval' ? '대표 평가' : SURVEYS[k].short + ' 응답') + '을 삭제할까요? 되돌릴 수 없습니다.')) return; try { await API.post({ action: 'admin_delete', key: S.auth.key, survey: k, name: b.dataset.name }); toast('삭제했습니다'); await refreshCeo(true); } catch (err) { toast(err.message); } return; }
+  if (act === 'demo-reset') { if (!confirm('데모 데이터를 초기화할까요?')) return; await API.post({ action: 'demo_reset' }); location.reload(); return; }
+});
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.dataset && t.dataset.input) { S.answers[t.dataset.input] = t.value; delete S.errors[t.dataset.input]; const q = t.closest('.q'); if (q) q.classList.remove('err'); allItems(SURVEYS[S.survey]).filter(x => x.showIf && x.showIf.id === t.dataset.input && x.showIf.nonEmpty).forEach(x => { const was = $(`[data-q="${x.id}"]`); const vis = visible(x); if (was && (was.style.display === 'none') === vis) rerenderItem(x.id); }); clearTimeout(window._dt); window._dt = setTimeout(() => { saveDraft(); updateProgress(); }, 400); return; }
+  if (t.id === 'ceo-comment' && S.ceo.draft) { S.ceo.draft.comment = t.value; markDirty(S.ceo.draft); }
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.id === 'g-name') { const c = $('#g-name-custom'); const opt = t.selectedOptions[0]; if (t.value === '__custom') { c.style.display = ''; c.focus(); S.me.custom = true; } else { c.style.display = 'none'; S.me.custom = false; if (opt && opt.dataset.team) $('#g-team').value = opt.dataset.team; } }
+  if (t.dataset && t.dataset.open != null) { t.closest('label').classList.toggle('on', t.checked); }
+  if (t.dataset && t.dataset.select) { setAnswer(t.dataset.select, t.value); }
+});
+document.addEventListener('keydown', e => { if (e.key === 'Enter' && (e.target.id === 'login-key')) login(S.route === 'admin' ? 'admin' : 'ceo'); if (e.key === 'Enter' && e.target.id === 'g-pin') gateGo(); });
+$('#themeBtn').addEventListener('click', e => { e.preventDefault(); const r = document.documentElement; const cur = r.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); r.dataset.theme = cur === 'dark' ? 'light' : 'dark'; lsSet('lsv_theme', r.dataset.theme); });
+(function () { const t = lsGet('lsv_theme', null); if (t) document.documentElement.dataset.theme = t; })();
+function afterRender() { const k = $('#login-key'); if (k) k.focus(); }
+// 대표님 평가 초안은 localStorage 에 보관되므로 새로고침·탭 이동 경고가 필요 없음
+
+/* ───────────── 시작 ───────────── */
+(async function init() {
+  route();
+  await loadState();
+  if (S.auth) { try { const r = await API.post({ action: 'ceo_state', key: S.auth.key }); S.ceo.data = r.data; S.auth.role = r.role; } catch (e) { S.auth = null; lsDel('lsv_auth'); } }
+  render();
+})();
+</script>
+</body>
+</html>
